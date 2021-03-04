@@ -28,6 +28,11 @@ root                    (project root folder)
   +-- __init__.py       (python package file)
   +-- __main__.py       (entry point for program)
 +-- README.md           (general info)
++-- docs                (project planning documents)
+  +-- doc01_mockup
+  +-- doc02_wish-list
+  +-- doc03_feature_list
+  
 ```
 
 ## Required Technologies
