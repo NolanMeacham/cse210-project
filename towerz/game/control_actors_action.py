@@ -35,7 +35,7 @@ class ControlActorsAction(Action):
 
         if self._input_service.get_hit() == True:
             melee.attack(self._input_service.get_direction().get_x())
-        
-        if 
+        melee.shealth_melee()
+
             
 

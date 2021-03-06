@@ -23,3 +23,8 @@ class HandleCollisionsAction(Action):
         if hero.collides_with_list(zombies):
             hero.get_hit()
 
+        for zomb in zombies:
+            if zomb.get_current_health() <= 0:
+                zomb.remove_from_sprite_lists()
+
+

@@ -2,7 +2,9 @@ import arcade
 from game import constants
 
 class SpriteWithHealth(arcade.Sprite):
-    """ Sprite with hit points """
+    """ 
+    Sprite with hit points 
+    """
 
     def __init__(self, image, scale, max_health):
         super().__init__(image, scale)
@@ -12,7 +14,9 @@ class SpriteWithHealth(arcade.Sprite):
         self.cur_health = max_health
 
     def draw_health_number(self):
-        """ Draw how many hit points we have """
+        """
+        Draw how many hit points we have 
+        """
 
         health_string = f"{self.cur_health}/{self.max_health}"
         arcade.draw_text(health_string,
@@ -21,7 +25,9 @@ class SpriteWithHealth(arcade.Sprite):
                          font_size=12,
                          color=arcade.color.WHITE)
     def draw_health_bar(self):
-            """ Draw the health bar """
+            """
+            Draw the health bar 
+            """
 
             # Draw the 'unhealthy' background
             if self.cur_health <  self.max_health and self.cur_health > 0:
