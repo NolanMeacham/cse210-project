@@ -30,7 +30,14 @@ class DrawActorsAction(Action):
         self._output_service.clear_screen()
 
         hero = cast["hero"][0] # there's only one
-        self._output_service.draw_actor(hero)
+        zombies = cast['zombies']
 
+    
+
+        for zombie in zombies:
+            self._output_service.draw_actor(zombie)
+            zombie.draw_health_bar()
+        self._output_service.draw_actor(hero)
+        hero.draw_health_bar()
         self._output_service.flush_buffer()
 

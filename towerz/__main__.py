@@ -9,6 +9,7 @@ from game.input_service import ArcadeInputService
 from game.output_service import ArcadeOutputService
 from game.hero import Hero
 from game.towerz import Towerz
+from game.zombie import Zombie
 import arcade
 
 
@@ -19,6 +20,14 @@ def main():
 
     hero = Hero()
     cast["hero"] = [hero]
+
+    cast['zombies'] = arcade.SpriteList()
+
+    for i in range (5):
+        random_x = random.randint(0, (constants.MAX_X-50))
+        random_y =  random.randint(0,(constants.MAX_Y-50))
+        zombie = Zombie(random_x, random_y)
+        cast["zombies"].append(zombie)
 
         
 

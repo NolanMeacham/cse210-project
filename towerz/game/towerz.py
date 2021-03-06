@@ -5,8 +5,9 @@ class Towerz(arcade.Window):
     def __init__(self, cast, script, input_service):
         """Initialize the game
         """
-        super().__init__(constants.MAX_X, constants.MAX_Y, "Batter", True)
-
+        
+        super().__init__(constants.MAX_X, constants.MAX_Y, "Batter")
+        # The "True" boolean above is what makes it go fullscreen. Go ahead and delete it if you don't want it fullscreen
         self._cast = cast
         self._script = script
         self._input_service = input_service
