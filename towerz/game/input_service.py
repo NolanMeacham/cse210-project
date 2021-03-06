@@ -16,6 +16,8 @@ class ArcadeInputService:
     def __init__(self):
         """The class constructor."""
         self._keys = []
+        self.mouse_x = 0
+        self.mouse_y = 0
     
     def set_key(self, key, modifiers):
         #Ignoring modifies at this point...
@@ -28,6 +30,9 @@ class ArcadeInputService:
         if arcade.key.SPACE in self._keys:
             return True
 
+    def mouse_move(self, x, y):
+        self.mouse_x = x 
+        self.mouse_y = y
 
     def get_direction(self):
         """Gets the selected direction for the given player.
@@ -38,14 +43,14 @@ class ArcadeInputService:
         x = 0
         y = 0
 
-        if arcade.key.LEFT in self._keys:
+        if arcade.key.A in self._keys:
             x = -1
-        elif arcade.key.RIGHT in self._keys:
+        elif arcade.key.D in self._keys:
             x = 1
 
-        if arcade.key.UP in self._keys:
+        if arcade.key.W in self._keys:
             y = 1
-        elif arcade.key.DOWN in self._keys:
+        elif arcade.key.S in self._keys:
             y = -1
 
             

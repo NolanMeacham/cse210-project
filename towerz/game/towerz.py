@@ -29,6 +29,10 @@ class Towerz(arcade.Window):
         self._input_service.remove_key(symbol, modifiers)
         self._cue_action("input")
 
+    def on_mouse_motion(self, x, y, dx, dy):
+        self._input_service.mouse_move(x, y)
+        self._cue_action("input")
+
     def _cue_action(self, tag):
         """Executes the actions with the given tag.
         

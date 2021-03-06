@@ -8,17 +8,17 @@ class Melee(arcade.Sprite):
         self.offset = 0
         self.cast = cast
     def attack(self, direction):
-        facing = direction
-        hero = self.cast['hero'][0]
-        x = hero.center_x
-        y = hero.center_y
-        if facing == 1:
-            self.offset = 40
+        # facing = direction
+        # hero = self.cast['hero'][0]
+        # x = hero.center_x
+        # y = hero.center_y
+        # if facing == 1:
+        #     self.offset = 40
 
-        elif facing == -1:
-            self.offset = -40
-        self.center_y = y 
-        self.center_x = x + self.offset
+        # elif facing == -1:
+        #     self.offset = -40
+        # self.center_y = y 
+        # self.center_x = x + self.offset
 
         for zombie in self.cast['zombies']:
             if self.collides_with_sprite(zombie):

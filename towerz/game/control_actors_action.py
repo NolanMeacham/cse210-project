@@ -33,10 +33,24 @@ class ControlActorsAction(Action):
         hero.change_x = direction.get_x()
         hero.change_y = direction.get_y()
 
+        x_dif = self._input_service.mouse_x - hero.center_x
+
+        y_dif = self._input_service.mouse_y - hero.center_y
+
+        per_x = x_dif * 0.1
+        per_y = y_dif * 0.1
+
+        x = hero.center_x + per_x
+        y = hero.center_y + per_y
+
+        melee.position = (x,y)
+
 
 
         if self._input_service.get_hit() == True:
             melee.attack(self._input_service.get_direction().get_x())
+
+
 
 
             
