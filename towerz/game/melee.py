@@ -7,22 +7,18 @@ class Melee(arcade.Sprite):
         super().__init__(constants.HERO_IMAGE, 1,image_height=10, image_width=15)
         self.offset = 0
         self.cast = cast
-    def attack(self, direction):
-        # facing = direction
-        # hero = self.cast['hero'][0]
-        # x = hero.center_x
-        # y = hero.center_y
-        # if facing == 1:
-        #     self.offset = 40
+        self.timer = time.time()
+    def attack(self):
+        if time.time() - self.timer >= 1:
+            self.timer = time.time()
+            for zombie in self.cast['zombies']:
+                if self.collides_with_sprite(zombie):
+                    zombie.cur_health -= 20
 
-        # elif facing == -1:
-        #     self.offset = -40
-        # self.center_y = y 
-        # self.center_x = x + self.offset
+        else:
+            pass
 
-        for zombie in self.cast['zombies']:
-            if self.collides_with_sprite(zombie):
-                zombie.cur_health -= 20
+
 
 
 
@@ -33,6 +29,8 @@ class Melee(arcade.Sprite):
          
         self.center_y = y 
         self.center_x = x 
+
+
 
         
 

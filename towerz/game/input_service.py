@@ -26,7 +26,7 @@ class ArcadeInputService:
     def remove_key(self, key, modifiers):
         self._keys.remove(key)
     
-    def get_hit(self):
+    def is_attacking(self):
         if arcade.key.SPACE in self._keys:
             return True
 
