@@ -1,6 +1,6 @@
 import sys
 from game.point import Point
-
+from game.hero import Hero
 import arcade
 
 class ArcadeInputService:
@@ -18,11 +18,16 @@ class ArcadeInputService:
         self._keys = []
     
     def set_key(self, key, modifiers):
-        #Ignoring modifies ar this point...
+        #Ignoring modifies at this point...
         self._keys.append(key)
 
     def remove_key(self, key, modifiers):
         self._keys.remove(key)
+    
+    def get_hit(self):
+        if arcade.key.SPACE in self._keys:
+            return True
+
 
     def get_direction(self):
         """Gets the selected direction for the given player.
@@ -42,6 +47,8 @@ class ArcadeInputService:
             y = 1
         elif arcade.key.DOWN in self._keys:
             y = -1
+
+            
 
         velocity = Point(x, y)
         return velocity

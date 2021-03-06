@@ -10,6 +10,7 @@ from game.output_service import ArcadeOutputService
 from game.hero import Hero
 from game.towerz import Towerz
 from game.zombie import Zombie
+from game.melee import Melee
 import arcade
 
 
@@ -20,6 +21,9 @@ def main():
 
     hero = Hero()
     cast["hero"] = [hero]
+    
+    melee = Melee(cast)
+    cast["melee"] = [melee]
 
     cast['zombies'] = arcade.SpriteList()
 
