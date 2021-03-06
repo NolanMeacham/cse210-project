@@ -47,7 +47,7 @@ class DrawActorsAction(Action):
         self._output_service.draw_actor(hero)
         hero.draw_health_bar()
         tower.draw_health_bar()
-        melee.shealth_melee()
+        # melee.shealth_melee()
         
         self._output_service.flush_buffer()
 

@@ -9,7 +9,7 @@ class Melee(arcade.Sprite):
         self.cast = cast
         self.timer = time.time()
     def attack(self):
-        if time.time() - self.timer >= 1:
+        if time.time() - self.timer >= 0.25:
             self.timer = time.time()
             for zombie in self.cast['zombies']:
                 if self.collides_with_sprite(zombie):
