@@ -1,6 +1,9 @@
 from game import constants
 from game.action import Action
 from game.point import Point
+from game.zombie import Zombie
+import arcade
+
 
 class MoveActorsAction(Action):
     """A code template for moving actors. The responsibility of this class of
@@ -27,6 +30,9 @@ class MoveActorsAction(Action):
 
                 if actor.change_x != 0 or actor.change_y != 0:
                     self._move_actor(actor)
+        
+
+        
 
     def _move_actor(self, actor):
         """Moves the given actor to its next position according to its 

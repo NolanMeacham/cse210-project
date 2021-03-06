@@ -5,10 +5,11 @@ import arcade
 
 class Hero(SpriteWithHealth):
     def __init__(self):
-        super().__init__(constants.HERO_IMAGE, constants.HERO_SCALING, 100 )
+        super().__init__(constants.HERO_IMAGE, constants.HERO_SCALING, 100)
 
         self.center_x = int(constants.MAX_X / 2)
         self.center_y = int(constants.HERO_Y)
+
 
         self.alive = True
     def draw_health_bar(self):
@@ -33,6 +34,7 @@ class Hero(SpriteWithHealth):
     def get_hit(self):
         if self.cur_health > 0:
             self.cur_health = self.cur_health - 0.1
+
 
 
 

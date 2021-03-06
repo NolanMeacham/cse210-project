@@ -12,6 +12,7 @@ from game.towerz import Towerz
 from game.zombie import Zombie
 from game.melee import Melee
 from game.tower_sprite import TowerSprite
+from game.add_enemy import Add_enemy
 import arcade
 
 
@@ -30,11 +31,6 @@ def main():
     # add the zombies
     cast['zombies'] = arcade.SpriteList()
 
-    for i in range (5):
-        random_x = random.randint(0, (constants.MAX_X-50))
-        random_y =  random.randint(0,(constants.MAX_Y-50))
-        zombie = Zombie(random_x, random_y)
-        cast["zombies"].append(zombie)
 
     # add the tower
     tower = TowerSprite()
@@ -51,9 +47,10 @@ def main():
     move_actors_action = MoveActorsAction()
     handle_collisions_action = HandleCollisionsAction()
     draw_actors_action = DrawActorsAction(output_service)
-    
+    add_enemy = Add_enemy()
+
     script["input"] = [control_actors_action]
-    script["update"] = [move_actors_action, handle_collisions_action]
+    script["update"] = [move_actors_action, handle_collisions_action, add_enemy]
     script["output"] = [draw_actors_action]
 
     # start the game

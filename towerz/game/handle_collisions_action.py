@@ -18,12 +18,20 @@ class HandleCollisionsAction(Action):
         hero = cast['hero'][0]
 
         zombies = cast['zombies']
-        
+
+        tower = cast["tower"][0]
+
+        for zombie in zombies:
+            zombie.attack_tower()
         
         if hero.collides_with_list(zombies):
             hero.get_hit()
+        
 
         for zomb in zombies:
+            if zomb.collides_with_sprite(tower):
+                zomb.velocity = [0,0]
+                tower.cur_health -= 0.1
             if zomb.get_current_health() <= 0:
                 zomb.remove_from_sprite_lists()
 

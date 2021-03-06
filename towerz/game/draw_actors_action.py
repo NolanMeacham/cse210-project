@@ -32,18 +32,21 @@ class DrawActorsAction(Action):
         hero = cast["hero"][0] # there's only one
         zombies = cast['zombies']
         melee = cast['melee'][0]
+        tower = cast["tower"][0]
+
+        
     
         self._output_service.draw_actor(melee)
-        tower = cast["tower"][0]
 
     
         self._output_service.draw_actor(tower)
         for zombie in zombies:
             self._output_service.draw_actor(zombie)
             zombie.draw_health_bar()
-            
+
         self._output_service.draw_actor(hero)
         hero.draw_health_bar()
+        tower.draw_health_bar()
         melee.shealth_melee()
         
         self._output_service.flush_buffer()

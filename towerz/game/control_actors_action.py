@@ -29,13 +29,17 @@ class ControlActorsAction(Action):
         direction = self._input_service.get_direction().scale(constants.HERO_MOVE_SCALE)
         hero = cast["hero"][0] # there's only one in the cast
         melee = cast['melee'][0]
+        zombies = cast['zombies']
         hero.change_x = direction.get_x()
         hero.change_y = direction.get_y()
+
+        for zombie in zombies:
+            zombie.attack_tower()
 
 
         if self._input_service.get_hit() == True:
             melee.attack(self._input_service.get_direction().get_x())
-        melee.shealth_melee()
+
 
             
 
