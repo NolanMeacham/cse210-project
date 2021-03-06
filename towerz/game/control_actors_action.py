@@ -33,8 +33,6 @@ class ControlActorsAction(Action):
         hero.change_x = direction.get_x()
         hero.change_y = direction.get_y()
 
-        for zombie in zombies:
-            zombie.attack_tower()
 
 
         if self._input_service.get_hit() == True:
