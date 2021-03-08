@@ -61,3 +61,15 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+"""
+I can't believe I have to listen to this crap all the time. It is absolutely horrid. I want it to die in a very, very, very large hole that has a freaking spike in the bottom
+actually, I would like that hole to have multiple spikes. If all the spikes where in the hole, then the music would definitely die. Music can't survive spikes. Nothing can.
+In fact, I don't even think superman can survive spikes. You know who can survive spikes though? Me, I can. I can do it. I'm like the little train engine that could, and
+everyone else is the little train engine that couldn't. HA. Fight me you insignificant piles of swelsh and slop. You can't win even if I wanted to lose. How's that for 
+awsomeness. Eat my large pineapple you fiends. You never stood a chance against my genius. Don't dwell on the fact that it took about 10 seconds for me to remember how to 
+spell the word "genious". I'm smarterer than you, and you know it's true. 
+
+
+transcriptsubmit@byui.edu
+"""
