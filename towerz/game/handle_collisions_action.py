@@ -19,6 +19,8 @@ class HandleCollisionsAction(Action):
 
         zombies = cast['zombies']
 
+        walls = cast['walls']
+
         tower = cast["tower"][0]
 
         for zombie in zombies:
@@ -26,6 +28,10 @@ class HandleCollisionsAction(Action):
         
         if hero.collides_with_list(zombies):
             hero.get_hit()
+
+        for wall in walls:
+            if wall.collides_with_list(zombies):
+                wall.get_hit()
         
 
         for zomb in zombies:

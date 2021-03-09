@@ -33,6 +33,7 @@ class DrawActorsAction(Action):
         zombies = cast['zombies']
         melee = cast['melee'][0]
         tower = cast["tower"][0]
+        walls = cast['walls']
 
         
     
@@ -43,6 +44,8 @@ class DrawActorsAction(Action):
         for zombie in zombies:
             self._output_service.draw_actor(zombie)
             zombie.draw_health_bar()
+        for wall in walls:
+            self._output_service.draw_actor(wall)
 
         self._output_service.draw_actor(hero)
         hero.draw_health_bar()

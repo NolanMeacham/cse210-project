@@ -30,6 +30,10 @@ class ArcadeInputService:
         if arcade.key.SPACE in self._keys:
             return True
 
+    def is_building(self):
+        if arcade.key.Z in self._keys:
+            return True
+
     def mouse_move(self, x, y):
         self.mouse_x = x 
         self.mouse_y = y
