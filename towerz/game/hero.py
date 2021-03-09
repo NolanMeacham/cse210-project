@@ -1,15 +1,17 @@
 from game.point import Point
 from game import constants
 from game.sprite_with_health import SpriteWithHealth
+from game.wall import Wall
 import arcade
 
 class Hero(SpriteWithHealth):
-    def __init__(self):
+    def __init__(self, cast):
         super().__init__(constants.HERO_IMAGE, constants.HERO_SCALING, 100)
 
         self.center_x = int(constants.MAX_X / 2)
         self.center_y = int(constants.HERO_Y)
-        
+        self.cast = cast
+        self._position_list = []
 
         self.alive = True
     def draw_health_bar(self):
@@ -38,7 +40,20 @@ class Hero(SpriteWithHealth):
         if self.cur_health > 0:
             self.cur_health = self.cur_health - 0.1
 
+    def gather_position_list(self):
+       
+        position = (self._get_position())
+        self._position_list.append(position)
+        if len(self._position_list) > 2:
+            self._position_list.pop(0)
 
+    def get_position_list(self):
+        return self._position_list
 
-
+    def build_wall(self):
+        pos_list = self.get_position_list()
+        x = pos_list[1][0]
+        y = pos_list[1][1]
+        wall = Wall(x,y)
+        self.cast['walls'].append(wall)
             

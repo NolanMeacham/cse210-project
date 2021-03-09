@@ -1,3 +1,4 @@
+from game.add_wall import Add_Wall
 from game import constants
 from game.action import Action
 
@@ -30,8 +31,10 @@ class ControlActorsAction(Action):
         hero = cast["hero"][0] # there's only one in the cast
         melee = cast['melee'][0]
         zombies = cast['zombies']
+        walls = cast['walls']
         hero.change_x = direction.get_x()
         hero.change_y = direction.get_y()
+        hero.gather_position_list()
 
         x_dif = self._input_service.mouse_x - hero.center_x
 
@@ -49,8 +52,11 @@ class ControlActorsAction(Action):
 
         if self._input_service.is_attacking() == True:
             melee.attack()
-
-
+        
+        
+        if self._input_service.is_building() == True:
+            hero.build_wall()
+        
 
 
             

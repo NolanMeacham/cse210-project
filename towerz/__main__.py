@@ -13,6 +13,7 @@ from game.zombie import Zombie
 from game.melee import Melee
 from game.tower_sprite import TowerSprite
 from game.add_enemy import Add_enemy
+from game.wall import Wall
 import arcade
 
 
@@ -22,7 +23,7 @@ def main():
     cast = {}
 
     # add the hero
-    hero = Hero()
+    hero = Hero(cast)
     cast["hero"] = [hero]
     
     melee = Melee(cast)
@@ -36,6 +37,9 @@ def main():
     tower = TowerSprite()
     cast["tower"] = [tower]
 
+    # add the wall
+    cast["walls"] = arcade.SpriteList()
+
 
     # create the script {key: tag, value: list}
     script = {}
@@ -48,6 +52,7 @@ def main():
     handle_collisions_action = HandleCollisionsAction()
     draw_actors_action = DrawActorsAction(output_service)
     add_enemy = Add_enemy()
+    
 
     script["input"] = [control_actors_action]
     script["update"] = [move_actors_action, handle_collisions_action, add_enemy]
