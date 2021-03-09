@@ -43,3 +43,6 @@ class TowerSprite(SpriteWithHealth):
                                         width=health_width,
                                         height=constants.HERO_HEALTHBAR_HEIGHT,
                                         color=arcade.color.GREEN)
+            display_health = round(self.cur_health)
+            arcade.draw_text(f"Tower HP: {display_health}",
+                        constants.TOWER_HEALTH_X - 178, constants.TOWER_HEALTH_Y + 30, arcade.color.WHITE, 14, width=200, align="center")
