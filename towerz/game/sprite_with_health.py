@@ -12,6 +12,7 @@ class SpriteWithHealth(arcade.Sprite):
         # Add extra attributes for health
         self.max_health = max_health
         self.cur_health = max_health
+        self.obj_name = 'test'
 
     def draw_health_number(self):
         """
@@ -37,6 +38,8 @@ class SpriteWithHealth(arcade.Sprite):
                                             height=3,
                                             color=arcade.color.RED)
 
+                
+
             # Calculate width based on health
             health_width = constants.HEALTHBAR_WIDTH * (self.cur_health / self.max_health)
             if self.cur_health > 0:
@@ -45,3 +48,5 @@ class SpriteWithHealth(arcade.Sprite):
                                         width=health_width,
                                         height=constants.HEALTHBAR_HEIGHT,
                                         color=arcade.color.GREEN)
+                arcade.draw_text(f"{self.cur_health}",
+                         self.center_x - 100, self.center_y - 30, arcade.color.WHITE, 14, width=200, align="center")

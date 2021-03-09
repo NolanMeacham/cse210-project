@@ -9,7 +9,7 @@ class Hero(SpriteWithHealth):
 
         self.center_x = int(constants.MAX_X / 2)
         self.center_y = int(constants.HERO_Y)
-
+        
 
         self.alive = True
     def draw_health_bar(self):
@@ -31,6 +31,9 @@ class Hero(SpriteWithHealth):
                                         width=health_width,
                                         height=constants.HERO_HEALTHBAR_HEIGHT,
                                         color=arcade.color.GREEN)
+            display_health = round(self.cur_health)
+            arcade.draw_text(f"Hero HP: {display_health}",
+                        constants.HERO_HEALTH_X - 181, constants.HERO_HEALTH_Y + 30, arcade.color.WHITE, 14, width=200, align="center")
     def get_hit(self):
         if self.cur_health > 0:
             self.cur_health = self.cur_health - 0.1
