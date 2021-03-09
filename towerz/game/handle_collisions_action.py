@@ -30,8 +30,12 @@ class HandleCollisionsAction(Action):
             hero.get_hit()
 
         for wall in walls:
-            if wall.collides_with_list(zombies):
-                wall.get_hit()
+            for zombie in zombies:
+                if wall.collides_with_sprite(zombie):
+                    wall.get_hit()
+                    zombie.velocity = [0,0]
+                    if wall.get_current_health() <= 0:
+                        wall.remove_from_sprite_lists()
         
 
         for zomb in zombies:
