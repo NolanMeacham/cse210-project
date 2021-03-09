@@ -1,4 +1,4 @@
-from game.add_wall import Add_Wall
+
 from game import constants
 from game.action import Action
 
