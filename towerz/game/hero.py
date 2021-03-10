@@ -1,4 +1,3 @@
-from towerz.game.constants import ZOMBIE_HIT
 from game.point import Point
 from game import constants
 from game.sprite_with_health import SpriteWithHealth
