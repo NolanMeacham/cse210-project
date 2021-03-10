@@ -1,5 +1,5 @@
 
-HERO_MOVE_SCALE = 2
+HERO_MOVE_SCALE = 4
 HERO_IMAGE = "towerz/images/blue_rectangle.png"
 ZOMBIE_IMAGE = "towerz/images/red_rectangle.png"
 WALL_IMAGE = "towerz/images/wall_h.png"
@@ -42,3 +42,4 @@ ZOMBIE_SPEED = 1
 
 #wall
 WALL_SCALING = 1
+WALL_LIFETIME = 7

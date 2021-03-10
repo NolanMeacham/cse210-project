@@ -35,6 +35,9 @@ class ControlActorsAction(Action):
         hero.change_x = direction.get_x()
         hero.change_y = direction.get_y()
         hero.gather_position_list()
+        
+        for wall in walls:
+            wall.timed_death()
 
         x_dif = self._input_service.mouse_x - hero.center_x
 
@@ -57,7 +60,9 @@ class ControlActorsAction(Action):
         if self._input_service.is_building() == True:
             hero.build_wall()
         
-
+        if self._input_service.cast_magic() == True:
+            for wall in walls:
+                wall.cast_magic()
 
             
 

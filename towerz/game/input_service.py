@@ -31,7 +31,11 @@ class ArcadeInputService:
             return True
 
     def is_building(self):
-        if arcade.key.Z in self._keys:
+        while arcade.key.Z in self._keys:
+            return True
+    
+    def cast_magic(self):
+        if arcade.key.Q in self._keys:
             return True
 
     def mouse_move(self, x, y):

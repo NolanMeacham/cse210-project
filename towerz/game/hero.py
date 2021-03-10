@@ -12,6 +12,7 @@ class Hero(SpriteWithHealth):
         self.center_y = int(constants.HERO_Y)
         self.cast = cast
         self._position_list = []
+        self.change_angle = 45
 
         self.alive = True
     def draw_health_bar(self):
@@ -51,9 +52,10 @@ class Hero(SpriteWithHealth):
         return self._position_list
 
     def build_wall(self):
-        pos_list = self.get_position_list()
-        x = pos_list[1][0]
-        y = pos_list[1][1]
-        wall = Wall(x,y)
-        self.cast['walls'].append(wall)
+        if len(self.cast['walls']) < 4:
+            pos_list = self.get_position_list()
+            x = pos_list[1][0]
+            y = pos_list[1][1]
+            wall = Wall(x,y,self.cast)
+            self.cast['walls'].append(wall)
             
