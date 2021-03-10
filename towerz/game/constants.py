@@ -39,6 +39,7 @@ TOWER_HEALTH_Y = 50
 
 #zombie
 ZOMBIE_SPEED = 1
+ZOMBIE_HIT = .1
 
 #wall
 WALL_SCALING = 1

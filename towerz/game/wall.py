@@ -16,14 +16,24 @@ class Wall(SpriteWithHealth):
         self._lifetime = constants.WALL_LIFETIME
         self.alive = True
     
+    """
+    Detects a hit from a zombie
+    """
     def get_hit(self):
         if self.cur_health > 0:
-            self.cur_health = self.cur_health - 0.1
+            self.cur_health = self.cur_health - constants.ZOMBIE_HIT
 
+    """
+    Gives a timed death to the wall object
+    """
     def timed_death(self):
         if time.time() - self.timer >= self._lifetime:        
             self.remove_from_sprite_lists()
 
+    """
+    TODO: CASTS THE MAGIC THAT INTERACTS BETWEEN ALL OF THE WALLS.
+
+    """
     def cast_magic(self):
         cast = self.cast
         zombies = cast["zombies"]
