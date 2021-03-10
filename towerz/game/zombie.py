@@ -38,6 +38,19 @@ class Zombie(SpriteWithHealth):
             self.change_x = math.cos(angle) * constants.ZOMBIE_SPEED
             self.change_y = math.sin(angle) * constants.ZOMBIE_SPEED
     
-    def zombie_melee(self):
-        pass
+    def zombie_attack(self):
+        cast = self.cast
+        walls = cast['walls']
+        hero = cast['hero']
+        tower = cast['tower']
+        counter = 0
+        counter += 1 
+        if counter != 30:
+            pass
+        else:
+            for wall in walls:
+                if self.collides_with_sprite(wall):
+                    wall.get_hit()
+                    #TODO create strength attribute for each class. 
+                    #TODO lower strength of zombie & stop zombie when collides with hero
 
