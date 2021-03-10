@@ -40,6 +40,9 @@ def main():
     # add the wall
     cast["walls"] = arcade.SpriteList()
 
+    # add the resources
+    cast['resources'] = arcade.SpriteList()
+
 
     # create the script {key: tag, value: list}
     script = {}

@@ -43,3 +43,7 @@ ZOMBIE_SPEED = 1
 #wall
 WALL_SCALING = 1
 WALL_LIFETIME = 7
+
+#Resource
+RESOURCE_IMAGE = "towerz/images/crystal2.png"
+RESOURCE_SCALING = 1

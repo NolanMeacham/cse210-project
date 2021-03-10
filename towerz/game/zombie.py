@@ -15,8 +15,6 @@ class Zombie(SpriteWithHealth):
         self.alive = True
         self.cast = cast
 
-    def get_current_health(self):
-        return self.cur_health
 
     def attack_tower(self):
             start_x = self.center_x

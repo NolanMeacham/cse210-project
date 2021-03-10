@@ -13,6 +13,7 @@ class SpriteWithHealth(arcade.Sprite):
         self.max_health = max_health
         self.cur_health = max_health
         self.obj_name = 'test'
+        self.health_color = arcade.color.RED
 
     def draw_health_number(self):
         """
@@ -36,7 +37,7 @@ class SpriteWithHealth(arcade.Sprite):
                                             center_y=self.center_y + constants.HEALTHBAR_OFFSET_Y,
                                             width=constants.HEALTHBAR_WIDTH,
                                             height=3,
-                                            color=arcade.color.RED)
+                                            color=self.health_color)
 
                 
 

@@ -4,6 +4,7 @@ import random
 import arcade
 from game.action import Action
 from game.zombie import Zombie
+from game.resource import Resource
 
 class Add_enemy(Action):
     """
@@ -13,6 +14,9 @@ class Add_enemy(Action):
         self.begin_spawn()
     def execute(self, cast):
         self.cast = cast
+        resources = cast['resources'] 
+        if len(resources) < 5:
+            self.make_resource()
 
 
 
@@ -48,6 +52,27 @@ class Add_enemy(Action):
 
     def begin_spawn(self):
         arcade.schedule(self.create_zombie, 4.0)
+
+    def make_resource(self):
+        ran = random.randint(1, 5)
+        random_x = 0
+        random_y = 0
+        if ran == 1:
+            random_x = constants.MAX_X - 20
+            random_y = random.randint(0 , constants.MAX_Y - 20)
+        elif ran == 2:
+            random_x = 20
+            random_y = random.randint(0 , constants.MAX_Y - 20)
+        elif ran == 3:
+            random_x = random.randint(0 , constants.MAX_X - 20)
+            random_y = 20
+        elif ran == 4:
+            random_x =  random.randint(0 , constants.MAX_X - 20)
+            random_y = constants.MAX_Y + 20
+
+        resource = Resource(random_x, random_y)
+
+        self.cast['resources'].append(resource)
 
     
 
