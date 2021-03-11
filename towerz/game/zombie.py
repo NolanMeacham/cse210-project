@@ -35,4 +35,7 @@ class Zombie(SpriteWithHealth):
             # and change_y. Velocity is how fast the bullet travels.
             self.change_x = math.cos(angle) * constants.ZOMBIE_SPEED
             self.change_y = math.sin(angle) * constants.ZOMBIE_SPEED
+    
+    def zombie_melee(self):
+        pass
 

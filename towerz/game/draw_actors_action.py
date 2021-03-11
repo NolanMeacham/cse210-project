@@ -35,6 +35,7 @@ class DrawActorsAction(Action):
         tower = cast["tower"][0]
         walls = cast['walls']
         resources = cast['resources']
+        score = cast["score"][0]
 
         
     
@@ -54,7 +55,9 @@ class DrawActorsAction(Action):
         self._output_service.draw_actor(hero)
         hero.draw_health_bar()
         tower.draw_health_bar()
-        # melee.shealth_melee()
+        melee.shealth_melee()
+
+        self._output_service.draw_actor(score)
         
         self._output_service.flush_buffer()
 

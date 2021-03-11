@@ -14,6 +14,7 @@ from game.melee import Melee
 from game.tower_sprite import TowerSprite
 from game.add_enemy import Add_enemy
 from game.wall import Wall
+from game.score import Score
 import arcade
 
 
@@ -32,7 +33,6 @@ def main():
     # add the zombies
     cast['zombies'] = arcade.SpriteList()
 
-
     # add the tower
     tower = TowerSprite()
     cast["tower"] = [tower]
@@ -43,6 +43,9 @@ def main():
     # add the resources
     cast['resources'] = arcade.SpriteList()
 
+    # add the score
+    score = Score()
+    cast["score"] = [score]
 
     # create the script {key: tag, value: list}
     script = {}
