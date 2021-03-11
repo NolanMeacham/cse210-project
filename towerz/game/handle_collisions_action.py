@@ -23,6 +23,10 @@ class HandleCollisionsAction(Action):
 
         tower = cast["tower"][0]
 
+        score = cast["score"][0]
+
+
+
         for zombie in zombies:
             zombie.attack_tower()
         
@@ -44,5 +48,6 @@ class HandleCollisionsAction(Action):
                 tower.cur_health -= 0.1
             if zomb.get_current_health() <= 0:
                 zomb.remove_from_sprite_lists()
+                score.add_points(zomb.score_points)
 
 
