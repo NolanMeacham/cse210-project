@@ -14,6 +14,7 @@ class Zombie(SpriteWithHealth):
         self.center_y = y
         self.alive = True
         self.cast = cast
+        self.score_points = 10
 
     def get_current_health(self):
         return self.cur_health
