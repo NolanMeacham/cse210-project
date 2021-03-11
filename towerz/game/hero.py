@@ -39,7 +39,7 @@ class Hero(SpriteWithHealth):
                         constants.HERO_HEALTH_X - 181, constants.HERO_HEALTH_Y + 30, arcade.color.WHITE, 14, width=200, align="center")
     def get_hit(self):
         if self.cur_health > 0:
-            self.cur_health = self.cur_health - 0.1
+            self.cur_health = self.cur_health - constants.ZOMBIE_HIT
 
     def gather_position_list(self):
        
