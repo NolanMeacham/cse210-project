@@ -58,7 +58,9 @@ class DrawActorsAction(Action):
         tower.draw_health_bar()
         resource_counter.draw_health_bar()
         melee.shealth_melee()
-        
+        if len(walls) > 2:
+            for wall in walls:
+                wall.draw_magic()
 
         self._output_service.draw_actor(score)
         

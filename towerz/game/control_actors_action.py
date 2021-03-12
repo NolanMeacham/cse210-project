@@ -54,14 +54,14 @@ class ControlActorsAction(Action):
 
         self._input_service.escape_method() 
         
-        if self._input_service.is_attacking() == True:
+        if self._input_service.is_attacking():
             melee.attack()
         
         
-        if self._input_service.is_building() == True:
+        if self._input_service.is_building():
             hero.build_wall()
         
-        if self._input_service.cast_magic() == True:
+        if self._input_service.cast_magic():
             for wall in walls:
                 wall.cast_magic()
 

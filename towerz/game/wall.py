@@ -15,6 +15,7 @@ class Wall(SpriteWithHealth):
         self.timer = time.time()
         self._lifetime = constants.WALL_LIFETIME
         self.alive = True
+        self._point_list = []
     
     """
     Detects a hit from a zombie
@@ -43,6 +44,12 @@ class Wall(SpriteWithHealth):
         for wall in walls:
             point = wall._get_position()
             point_list.append(point)
-        arcade.draw_line_strip(point_list, arcade.color.BLIZZARD_BLUE, 30)
+        point_list.append(point_list[0])
+        self._point_list = point_list
+
+    def draw_magic(self):
+        if len(self._point_list) > 2:
+            arcade.draw_line_strip(self._point_list, arcade.color.RED, 3)
+        self._point_list = []
 
         
