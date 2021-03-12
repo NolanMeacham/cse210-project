@@ -61,8 +61,10 @@ class ControlActorsAction(Action):
         
         
         if self._input_service.is_building():
-            hero.build_wall()
-            resource_counter.cur_health -= 20
+            
+            if resource_counter.cur_health >= 20:
+                hero.build_wall()
+                resource_counter.cur_health -= 20
 
         
         if self._input_service.cast_magic():
