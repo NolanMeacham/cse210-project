@@ -25,6 +25,13 @@ class ArcadeInputService:
 
     def remove_key(self, key, modifiers):
         self._keys.remove(key)
+
+    def constant_updating(self):
+        while arcade.key.ESCAPE not in self._keys:
+            break
+    def escape_method(self):
+        if arcade.key.ESCAPE in self._keys:
+            arcade.close_window()
     
     def is_attacking(self):
         if arcade.key.SPACE in self._keys:

@@ -52,7 +52,8 @@ class ControlActorsAction(Action):
         melee.position = (x,y)
 
 
-
+        self._input_service.escape_method() 
+        
         if self._input_service.is_attacking() == True:
             melee.attack()
         
