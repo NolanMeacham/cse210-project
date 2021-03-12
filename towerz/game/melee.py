@@ -17,6 +17,7 @@ class Melee(arcade.Sprite):
 
             for resource in self.cast['resources']:
                 if self.collides_with_sprite(resource):
+                    resource.get_smaller()
                     
                     resource.cur_health -= 20
 

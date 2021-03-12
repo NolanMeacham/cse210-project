@@ -4,11 +4,14 @@ import arcade
 
 class Resource(SpriteWithHealth):
     def __init__(self, x, y):
-        super().__init__(constants.RESOURCE_IMAGE, constants.RESOURCE_SCALING, 100 )
+        super().__init__(constants.RESOURCE_IMAGE, 0.1, 100 )
         self.center_x = x
         self.center_y = y
         self.alive = True
         self.health_color = arcade.color.PURPLE
+
+    def get_smaller(self):
+        self.scale -= 0.02
 
     
     
