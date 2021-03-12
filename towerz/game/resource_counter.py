@@ -32,6 +32,7 @@ class ResourceCounter(SpriteWithHealth):
                                         width=250,
                                         height=20,
                                         color=self.health_color)
+                display_health = round(self.cur_health)
                 arcade.draw_text(f"Resources: {display_health}",
-                        constants.HERO_HEALTH_X - 181, constants.HERO_HEALTH_Y + 30, arcade.color.WHITE, 14, width=200, align="center")
+                        self.center_x - 181, self.center_y + 30, arcade.color.WHITE, 14, width=200, align="center")
     
