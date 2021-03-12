@@ -15,6 +15,10 @@ class Melee(arcade.Sprite):
                 if self.collides_with_sprite(zombie):
                     zombie.cur_health -= 20
 
+            for resource in self.cast['resources']:
+                if self.collides_with_sprite(resource):
+                    resource.cur_health -= 100
+
         else:
             pass
 

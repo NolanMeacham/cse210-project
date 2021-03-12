@@ -47,4 +47,4 @@ WALL_LIFETIME = 7
 
 #Resource
 RESOURCE_IMAGE = "towerz/images/crystal2.png"
-RESOURCE_SCALING = 1
+RESOURCE_SCALING = 0.01

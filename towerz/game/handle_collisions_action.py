@@ -25,6 +25,8 @@ class HandleCollisionsAction(Action):
 
         score = cast["score"][0]
 
+        resources = cast["resources"]
+
 
 
         for zombie in zombies:
@@ -40,6 +42,10 @@ class HandleCollisionsAction(Action):
                     zombie.velocity = [0,0]
                     if wall.get_current_health() <= 0:
                         wall.remove_from_sprite_lists()
+
+        for resource in resources:
+            if resource.get_current_health() <= 0:
+                resource.remove_from_sprite_lists()
         
 
         for zomb in zombies:

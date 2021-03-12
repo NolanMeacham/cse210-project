@@ -54,21 +54,21 @@ class Add_enemy(Action):
         arcade.schedule(self.create_zombie, 4.0)
 
     def make_resource(self):
-        ran = random.randint(1, 5)
-        random_x = 0
-        random_y = 0
-        if ran == 1:
-            random_x = constants.MAX_X - 20
-            random_y = random.randint(0 , constants.MAX_Y - 20)
-        elif ran == 2:
-            random_x = 20
-            random_y = random.randint(0 , constants.MAX_Y - 20)
-        elif ran == 3:
-            random_x = random.randint(0 , constants.MAX_X - 20)
-            random_y = 20
-        elif ran == 4:
-            random_x =  random.randint(0 , constants.MAX_X - 20)
-            random_y = constants.MAX_Y + 20
+        # ran = random.randint(1, 5)
+        random_x = random.randint(20, constants.MAX_X -20 )
+        random_y = random.randint(20, constants.MAX_Y - 20)
+        # if ran == 1:
+        #     random_x = constants.MAX_X - 20
+        #     random_y = random.randint(0 , constants.MAX_Y - 20)
+        # elif ran == 2:
+        #     random_x = 20
+        #     random_y = random.randint(0 , constants.MAX_Y - 20)
+        # elif ran == 3:
+        #     random_x = random.randint(0 , constants.MAX_X - 20)
+        #     random_y = 20
+        # elif ran == 4:
+        #     random_x =  random.randint(0 , constants.MAX_X - 20)
+        #     random_y = constants.MAX_Y + 20
 
         resource = Resource(random_x, random_y)
 

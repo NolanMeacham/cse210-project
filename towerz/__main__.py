@@ -15,6 +15,7 @@ from game.tower_sprite import TowerSprite
 from game.add_enemy import Add_enemy
 from game.wall import Wall
 from game.score import Score
+from game.resource_counter import ResourceCounter
 import arcade
 
 
@@ -46,6 +47,11 @@ def main():
     # add the score
     score = Score()
     cast["score"] = [score]
+
+    # add the resource counter
+    resource_counter = ResourceCounter(200,50)
+    cast['resource_counter'] = [resource_counter]
+
 
     # create the script {key: tag, value: list}
     script = {}
