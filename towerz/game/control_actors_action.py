@@ -32,6 +32,7 @@ class ControlActorsAction(Action):
         melee = cast['melee'][0]
         zombies = cast['zombies']
         walls = cast['walls']
+        resource_counter = cast['resource_counter'][0]
         hero.change_x = direction.get_x()
         hero.change_y = direction.get_y()
         hero.gather_position_list()
@@ -52,14 +53,16 @@ class ControlActorsAction(Action):
         melee.position = (x,y)
 
 
-        self._input_service.escape_method() 
-        
+
         if self._input_service.is_attacking() == True:
             melee.attack()
+            
         
         
-        if self._input_service.is_building() == True:
+        if self._input_service.is_building() == True and resource_counter.cur_health >= 20:
             hero.build_wall()
+            resource_counter.cur_health -= 20
+
         
         if self._input_service.cast_magic() == True:
             for wall in walls:

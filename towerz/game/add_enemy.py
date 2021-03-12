@@ -55,7 +55,8 @@ class Add_enemy(Action):
 
     def make_resource(self):
         # ran = random.randint(1, 5)
-        random_x = random.randint(20, constants.MAX_X -20 )
+        x_list = [constants.MAX_X/2 - 100, constants.MAX_X/2 + 100]
+        random_x = random.randint(20, random.choice(x_list))
         random_y = random.randint(20, constants.MAX_Y - 20)
         # if ran == 1:
         #     random_x = constants.MAX_X - 20

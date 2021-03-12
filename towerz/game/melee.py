@@ -17,8 +17,12 @@ class Melee(arcade.Sprite):
 
             for resource in self.cast['resources']:
                 if self.collides_with_sprite(resource):
-                    resource.cur_health -= 1
-                    self.cast["resource_counter"][0].cur_health += 2
+                    
+                    resource.cur_health -= 100
+
+                    if self.cast["resource_counter"][0].cur_health < 100:
+
+                        self.cast["resource_counter"][0].cur_health += 10
 
 
         else:
