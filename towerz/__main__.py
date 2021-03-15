@@ -8,7 +8,8 @@ from game.move_actors_action import MoveActorsAction
 from game.input_service import ArcadeInputService
 from game.output_service import ArcadeOutputService
 from game.hero import Hero
-from game.towerz import Towerz
+from game.towerz import TowerzView
+from game.start_screen import StartView
 from game.zombie import Zombie
 from game.melee import Melee
 from game.tower_sprite import TowerSprite
@@ -16,6 +17,8 @@ from game.add_enemy import Add_enemy
 from game.wall import Wall
 from game.score import Score
 from game.resource_counter import ResourceCounter
+from game.death_screen import DeathView
+from game.handle_lose_or_win import HandleLoseOrWinAction
 import arcade
 
 
@@ -63,16 +66,19 @@ def main():
     move_actors_action = MoveActorsAction()
     handle_collisions_action = HandleCollisionsAction()
     draw_actors_action = DrawActorsAction(output_service)
-    add_enemy = Add_enemy()
     
 
+    window = arcade.Window(constants.MAX_X, constants.MAX_Y, "Towerz") 
+    start_screen = StartView(cast, script, input_service)   
+
+    handle_lose_or_win = HandleLoseOrWinAction(window, start_screen)
+
     script["input"] = [control_actors_action]
-    script["update"] = [move_actors_action, handle_collisions_action, add_enemy]
+    script["update"] = [move_actors_action, handle_collisions_action, handle_lose_or_win]
     script["output"] = [draw_actors_action]
 
     # start the game
-    towerz = Towerz(cast, script, input_service)
-    towerz.setup()
+    window.show_view(start_screen)
     arcade.run()
 
 

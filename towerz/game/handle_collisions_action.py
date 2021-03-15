@@ -1,6 +1,7 @@
 import random
 from game import constants
 from game.action import Action
+from game.death_screen import DeathView
 import arcade 
 class HandleCollisionsAction(Action):
     """A code template for handling collisions. The responsibility of this class of objects is to update the game state when actors collide.
@@ -29,6 +30,7 @@ class HandleCollisionsAction(Action):
 
 
 
+
         for zombie in zombies:
             zombie.attack_tower()
         
@@ -51,7 +53,7 @@ class HandleCollisionsAction(Action):
         for zomb in zombies:
             if zomb.collides_with_sprite(tower):
                 zomb.velocity = [0,0]
-                tower.cur_health -= 0.1
+                tower.cur_health -= 5
             if zomb.get_current_health() <= 0:
                 zomb.remove_from_sprite_lists()
                 score.add_points(zomb.score_points)

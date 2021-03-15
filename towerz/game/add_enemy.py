@@ -15,8 +15,12 @@ class Add_enemy(Action):
     def execute(self, cast):
         self.cast = cast
         resources = cast['resources'] 
+        tower = cast['tower'][0]
         if len(resources) < 5:
             self.make_resource()
+        
+        if tower.cur_health <= 0:
+            arcade.unschedule(self.create_zombie)
 
 
 

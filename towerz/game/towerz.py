@@ -1,12 +1,13 @@
 import arcade
 from game import constants
 
-class Towerz(arcade.Window):
+
+class TowerzView(arcade.View):
     def __init__(self, cast, script, input_service):
         """Initialize the game
         """
         
-        super().__init__(constants.MAX_X, constants.MAX_Y, "TowerZ")
+        super().__init__()
         # The "True" boolean above is what makes it go fullscreen. Go ahead and delete it if you don't want it fullscreen
         self._cast = cast
         self._script = script
