@@ -28,14 +28,21 @@ HERO_HEALTH_NUMBER_OFFSET_Y = 0
 HERO_HEALTH_X = MAX_X/2
 HERO_HEALTH_Y = 50
 
-#Tower
-TOWER_IMAGE = "towerz/images/gray_castle.png"
+# Tower
+# TOWER_IMAGE = "towerz/images/gray_castle.png"
+TOWER_IMAGE = "towerz/images/gray_rectangle.png"
 TOWER_SCALE = 0.8
 TOWER_X = MAX_X / 2
 TOWER_Y = MAX_Y / 2
 TOWER_HEALTH = 500
 TOWER_HEALTH_X = 1000
 TOWER_HEALTH_Y = 50
+
+# Turret
+TURRET_IMAGE = "towerz/images/brown_rect_turret.png"
+TURRET_SCALE = 0.5
+TURRET_X = MAX_X / 2
+TURRET_Y = MAX_Y / 2 + 10
 
 #zombie
 ZOMBIE_SPEED = 0.25
