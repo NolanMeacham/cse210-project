@@ -20,8 +20,8 @@ class Score():
         Args:
             self (Score): an instance of Score.
         """
-        self.x = 10
-        self.y = 10
+        self.center_x = 10
+        self.center_y = 770
         self.change_x = 0
         self.change_y = 0
 
@@ -35,7 +35,7 @@ class Score():
             self (Score): an instance of Score.
         """
         score_text = f"Score: {self._score}"
-        arcade.draw_text(score_text, 10, 10, arcade.csscolor.WHITE, 18)
+        arcade.draw_text(score_text, self.center_x, self.center_y, arcade.csscolor.WHITE, 18)
 
     def get_score(self):
         """

@@ -28,8 +28,8 @@ class MoveActorsAction(Action):
                 # to detect is_zero()...
                 # if not actor.get_velocity().is_zero():
 
-                if actor.change_x != 0 or actor.change_y != 0:
-                    self._move_actor(actor)
+                # if actor.change_x != 0 or actor.change_y != 0:
+                self._move_actor(actor)
         
 
         

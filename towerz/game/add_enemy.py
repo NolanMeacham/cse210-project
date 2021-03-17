@@ -2,9 +2,11 @@
 from game import constants
 import random
 import arcade
+import time
 from game.action import Action
 from game.zombie import Zombie
 from game.resource import Resource
+from game.bigzombie import BigZombie
 
 class Add_enemy(Action):
     """
@@ -12,6 +14,7 @@ class Add_enemy(Action):
     """
     def __init__(self):
         self.begin_spawn()
+        self.timer = time.time()
     def execute(self, cast):
         self.cast = cast
         resources = cast['resources'] 
@@ -50,7 +53,15 @@ class Add_enemy(Action):
         elif ran == 4:
             random_x =  random.randint(0 , constants.MAX_X)
             random_y = constants.MAX_Y - 20
+
+        
+
         zombie = Zombie(random_x, random_y, self.cast)
+
+        if time.time() - self.timer >= 25:
+            new_zombie = BigZombie(random_x,random_y, self.cast)
+            self.cast['zombies'].append(new_zombie)
+            
 
         self.cast['zombies'].append(zombie)
 

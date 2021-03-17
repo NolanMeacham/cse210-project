@@ -50,6 +50,7 @@ class Zombie(SpriteWithHealth):
             for wall in walls:
                 if self.collides_with_sprite(wall):
                     wall.get_hit()
+                    self.velocity = (0,0)
                     #TODO create strength attribute for each class. 
                     #TODO lower strength of zombie & stop zombie when collides with hero
 
