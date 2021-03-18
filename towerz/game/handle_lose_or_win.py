@@ -17,19 +17,19 @@ class HandleLoseOrWinAction(Action):
         zombies = cast['zombies']
         resource = cast['resource_counter'][0]
         hero = cast['hero'][0]
+        turrets = cast['turrets']
 
-
-
-
-        if tower.cur_health <= 0:
+        if tower.get_current_health() <= 0:
             for zombie in zombies:
                 zombie.remove_from_sprite_lists()
-            death_screen = DeathView(self.start, tower)
-            self.window.show_view(death_screen)
+            for turret in turrets:
+                turret.remove_from_sprite_lists()
+            
             resource.cur_health = 0
             hero.cur_health = 100
-            for zombie in zombies:
-                zombie.remove_from_sprite_lists()
+
+            death_screen = DeathView(self.start, tower)
+            self.window.show_view(death_screen)
             
 
 

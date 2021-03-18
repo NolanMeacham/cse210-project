@@ -63,3 +63,5 @@ class HandleCollisionsAction(Action):
         # update each turret.
         for turret in turrets:
             turret.on_update()
+            if turret.get_current_health() <= 0:
+                turret.remove_from_sprite_lists()
