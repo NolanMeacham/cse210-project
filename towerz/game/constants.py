@@ -45,6 +45,12 @@ TURRET_X = MAX_X / 2
 TURRET_Y = MAX_Y / 2 + 10
 TURRET_HEALTH =  20
 
+# Bullet
+BULLET_IMAGE = "towerz/images/small_gray_rect.png"
+BULLET_SOUND = "towerz/sounds/turret_fire.wav"
+BULLET_SCALE = 0.08
+BULLET_SPEED = 7
+
 #zombie
 ZOMBIE_SPEED = 0.25
 ZOMBIE_HIT = .1

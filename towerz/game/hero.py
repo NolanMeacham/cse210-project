@@ -61,9 +61,8 @@ class Hero(SpriteWithHealth):
             self.cast['walls'].append(wall)
 
     def build_turret(self):
-        pos_list = self.get_position_list()
-        x = pos_list[1][0]
-        y = pos_list[1][1]
-        turret = Turret(x, y)
+        x = self._get_center_x()
+        y = self._get_center_y()
+        turret = Turret(x, y, self.cast)
         self.cast['turrets'].append(turret)
             
