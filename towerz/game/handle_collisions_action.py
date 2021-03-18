@@ -75,13 +75,9 @@ class HandleCollisionsAction(Action):
                 zombie.cur_health -= 25
 
             # This removes the bullets that are off screen
-            if bullet.center_x < 0:
+            if bullet.center_x < 0 or bullet.center_y < 0:
                 bullets.remove(bullet)
-            if bullet.center_x > constants.MAX_X:
-                bullets.remove(bullet)
-            if bullet.center_y < 0:
-                bullets.remove(bullet)
-            if bullet.center_y > constants.MAX_Y:
+            if bullet.center_x > constants.MAX_X or bullet.center_y > constants.MAX_Y:
                 bullets.remove(bullet)
 
 
