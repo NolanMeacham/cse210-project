@@ -35,6 +35,7 @@ class DrawActorsAction(Action):
         tower = cast["tower"][0]
         walls = cast['walls']
         turrets = cast['turrets']
+        bullets = cast['bullets']
         resource_counter = cast['resource_counter'][0]
         resources = cast['resources']
         score = cast["score"][0]
@@ -46,6 +47,9 @@ class DrawActorsAction(Action):
         for turret in turrets:
             self._output_service.draw_actor(turret)
             turret.draw_health_bar()
+
+        for bullet in bullets:
+            self._output_service.draw_actor(bullet)
 
         self._output_service.draw_actor(tower)
 

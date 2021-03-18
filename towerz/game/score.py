@@ -21,7 +21,7 @@ class Score():
             self (Score): an instance of Score.
         """
         self.center_x = 10
-        self.center_y = 770
+        self.center_y = constants.MAX_Y - 30
         self.change_x = 0
         self.change_y = 0
 
