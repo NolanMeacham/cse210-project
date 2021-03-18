@@ -34,6 +34,7 @@ class DrawActorsAction(Action):
         melee = cast['melee'][0]
         tower = cast["tower"][0]
         walls = cast['walls']
+        turrets = cast['turrets']
         resource_counter = cast['resource_counter'][0]
         resources = cast['resources']
         score = cast["score"][0]
@@ -42,11 +43,16 @@ class DrawActorsAction(Action):
     
         self._output_service.draw_actor(melee)
 
-    
+        for turret in turrets:
+            self._output_service.draw_actor(turret)
+            turret.draw_health_bar()
+
         self._output_service.draw_actor(tower)
+
         for zombie in zombies:
             self._output_service.draw_actor(zombie)
             zombie.draw_health_bar()
+
         for wall in walls:
             self._output_service.draw_actor(wall)
 

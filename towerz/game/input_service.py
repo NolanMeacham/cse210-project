@@ -40,6 +40,10 @@ class ArcadeInputService:
     def is_building(self):
         while arcade.key.Z in self._keys:
             return True
+
+    def is_building_turret(self):
+        if arcade.key.T in self._keys:
+            return True
     
     def cast_magic(self):
         if arcade.key.Q in self._keys:

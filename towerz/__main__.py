@@ -15,6 +15,7 @@ from game.melee import Melee
 from game.tower_sprite import TowerSprite
 from game.add_enemy import Add_enemy
 from game.wall import Wall
+from game.turret import Turret
 from game.score import Score
 from game.resource_counter import ResourceCounter
 from game.death_screen import DeathView
@@ -43,6 +44,9 @@ def main():
 
     # add the wall
     cast["walls"] = arcade.SpriteList()
+
+    # add the turret
+    cast["turrets"] = arcade.SpriteList()
 
     # add the resources
     cast['resources'] = arcade.SpriteList()
