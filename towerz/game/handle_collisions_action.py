@@ -24,6 +24,8 @@ class HandleCollisionsAction(Action):
 
         tower = cast["tower"][0]
 
+        turrets = cast["turrets"]
+
         score = cast["score"][0]
 
         resources = cast["resources"]
@@ -58,4 +60,6 @@ class HandleCollisionsAction(Action):
                 zomb.remove_from_sprite_lists()
                 score.add_points(zomb.score_points)
 
-
+        # update each turret.
+        for turret in turrets:
+            turret.on_update()

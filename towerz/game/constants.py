@@ -39,10 +39,11 @@ TOWER_HEALTH_X = 1000
 TOWER_HEALTH_Y = 50
 
 # Turret
-TURRET_IMAGE = "towerz/images/brown_rect_turret.png"
-TURRET_SCALE = 0.5
+TURRET_IMAGE = "towerz/images/brown_rect.png"
+TURRET_SCALE = 0.2
 TURRET_X = MAX_X / 2
 TURRET_Y = MAX_Y / 2 + 10
+TURRET_HEALTH =  20
 
 #zombie
 ZOMBIE_SPEED = 0.25

@@ -26,6 +26,7 @@ class SpriteWithHealth(arcade.Sprite):
                          start_y=self.center_y + constants.HEALTH_NUMBER_OFFSET_Y,
                          font_size=12,
                          color=arcade.color.WHITE)
+
     def draw_health_bar(self):
             """
             Draw the health bar 
@@ -51,5 +52,6 @@ class SpriteWithHealth(arcade.Sprite):
                                         color=arcade.color.GREEN)
                 arcade.draw_text(f"{self.cur_health}",
                          self.center_x - 100, self.center_y - 30, arcade.color.WHITE, 14, width=200, align="center")
+    
     def get_current_health(self):
         return self.cur_health

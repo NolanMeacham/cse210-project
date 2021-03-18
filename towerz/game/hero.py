@@ -2,6 +2,7 @@ from game.point import Point
 from game import constants
 from game.sprite_with_health import SpriteWithHealth
 from game.wall import Wall
+from game.turret import Turret
 import arcade
 
 class Hero(SpriteWithHealth):
@@ -58,4 +59,11 @@ class Hero(SpriteWithHealth):
             y = pos_list[1][1]
             wall = Wall(x,y,self.cast)
             self.cast['walls'].append(wall)
+
+    def build_turret(self):
+        pos_list = self.get_position_list()
+        x = pos_list[1][0]
+        y = pos_list[1][1]
+        turret = Turret(x, y)
+        self.cast['turrets'].append(turret)
             

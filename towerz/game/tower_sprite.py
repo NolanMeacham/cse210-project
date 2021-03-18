@@ -25,7 +25,10 @@ class TowerSprite(SpriteWithHealth):
         self.change_y = 0
 
     def draw_health_bar(self):
-        """ Draw the health bar """
+        """ 
+        Draw the tower health bar.
+        
+        """
 
         # Draw the 'unhealthy' background
         if self.cur_health <  self.max_health and self.cur_health > 0:
