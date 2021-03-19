@@ -29,55 +29,56 @@ class DrawActorsAction(Action):
         """
         self._output_service.clear_screen()
 
+        # Draw each actor in the cast
         for key, actors in cast.items():
             for actor in actors:
                 actor.draw()
             
 
-        hero = cast["hero"][0] # there's only one
-        zombies = cast['zombies']
-        melee = cast['melee'][0]
-        tower = cast["tower"][0]
-        walls = cast['walls']
-        turrets = cast['turrets']
-        bullets = cast['bullets']
-        resource_counter = cast['resource_counter'][0]
-        resources = cast['resources']
-        score = cast["score"][0]
+        # hero = cast["hero"][0] # there's only one
+        # zombies = cast['zombies']
+        # melee = cast['melee'][0]
+        # tower = cast["tower"][0]
+        # walls = cast['walls']
+        # turrets = cast['turrets']
+        # bullets = cast['bullets']
+        # resource_counter = cast['resource_counter'][0]
+        # resources = cast['resources']
+        # score = cast["score"][0]
 
         
     
-        self._output_service.draw_actor(melee)
+        # self._output_service.draw_actor(melee)
 
-        for turret in turrets:
-            self._output_service.draw_actor(turret)
-            turret.draw_health_bar()
+        # for turret in turrets:
+        #     self._output_service.draw_actor(turret)
+        #     turret.draw_health_bar()
 
-        for bullet in bullets:
-            self._output_service.draw_actor(bullet)
+        # for bullet in bullets:
+        #     self._output_service.draw_actor(bullet)
 
-        self._output_service.draw_actor(tower)
+        # self._output_service.draw_actor(tower)
 
-        for zombie in zombies:
-            self._output_service.draw_actor(zombie)
-            zombie.draw_health_bar()
+        # for zombie in zombies:
+        #     self._output_service.draw_actor(zombie)
+        #     zombie.draw_health_bar()
 
-        for wall in walls:
-            self._output_service.draw_actor(wall)
+        # for wall in walls:
+        #     self._output_service.draw_actor(wall)
 
-        for resource in resources:
-            self._output_service.draw_actor(resource)
+        # for resource in resources:
+        #     self._output_service.draw_actor(resource)
 
-        self._output_service.draw_actor(hero)
-        hero.draw_health_bar()
-        tower.draw_health_bar()
-        resource_counter.draw_health_bar()
-        melee.shealth_melee()
-        if len(walls) > 2:
-            for wall in walls:
-                wall.draw_magic()
+        # self._output_service.draw_actor(hero)
+        # hero.draw_health_bar()
+        # tower.draw_health_bar()
+        # resource_counter.draw_health_bar()
+        # melee.shealth_melee()
+        # if len(walls) > 2:
+        #     for wall in walls:
+        #         wall.draw_magic()
 
-        self._output_service.draw_actor(score)
+        # self._output_service.draw_actor(score)
         
         self._output_service.flush_buffer()
 
