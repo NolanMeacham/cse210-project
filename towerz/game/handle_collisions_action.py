@@ -32,9 +32,8 @@ class HandleCollisionsAction(Action):
 
         resources = cast["resources"]
 
-
-
-
+        # handle collisions for each actor appropriately:
+        
         for zombie in zombies:
             zombie.attack_tower()
         
@@ -79,5 +78,3 @@ class HandleCollisionsAction(Action):
                 bullets.remove(bullet)
             if bullet.center_x > constants.MAX_X or bullet.center_y > constants.MAX_Y:
                 bullets.remove(bullet)
-
-

@@ -20,36 +20,54 @@ class ArcadeInputService:
         self.mouse_y = 0
     
     def set_key(self, key, modifiers):
+        """
+        """
         #Ignoring modifies at this point...
         self._keys.append(key)
 
     def remove_key(self, key, modifiers):
+        """
+        """
         self._keys.remove(key)
 
     def constant_updating(self):
+        """
+        """
         while arcade.key.ESCAPE not in self._keys:
             break
     def escape_method(self):
+        """
+        """
         if arcade.key.ESCAPE in self._keys:
             arcade.close_window()
     
     def is_attacking(self):
+        """
+        """
         if arcade.key.SPACE in self._keys:
             return True
 
     def is_building(self):
+        """
+        """
         while arcade.key.Z in self._keys:
             return True
 
     def is_building_turret(self):
+        """
+        """
         if arcade.key.T in self._keys:
             return True
     
     def cast_magic(self):
+        """
+        """
         if arcade.key.Q in self._keys:
             return True
 
     def mouse_move(self, x, y):
+        """
+        """
         self.mouse_x = x 
         self.mouse_y = y
 
@@ -72,9 +90,6 @@ class ArcadeInputService:
         elif arcade.key.S in self._keys:
             y = -1
 
-            
-
         velocity = Point(x, y)
         return velocity
             
-

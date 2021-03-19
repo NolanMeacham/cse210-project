@@ -7,7 +7,20 @@ import arcade
 import time
 
 class Wall(SpriteWithHealth):
+    """
+    """
     def __init__(self, x, y, cast):
+        """
+        Class constructor.
+        Calls the constructor for parent class.
+
+        Args:
+            self (Wall): an instance of Wall
+            x (int): value representing x position
+            y (int): value representing y position
+            cast (dict): dictionary that holds all the actors
+            
+        """
         super().__init__(constants.WALL_IMAGE, constants.WALL_SCALING, 10)
 
         self.center_x = x
@@ -18,28 +31,31 @@ class Wall(SpriteWithHealth):
         self.alive = True
         self._point_list = []
         # self.wall_connector = WallConnector()
-    """
-    Detects a hit from a zombie
-    """
+   
     def get_hit(self):
+        """
+        Detects a hit from a zombie
+        """
         if self.cur_health > 0:
             self.cur_health = self.cur_health - constants.ZOMBIE_HIT
         elif self.cur_health <= 0:
             self._point_list = []
 
-    """
-    Gives a timed death to the wall object
-    """
+    
     def timed_death(self):
+        """
+        Gives a timed death to the wall object
+        """
         # if time.time() - self.timer >= self._lifetime:        
         #     self.remove_from_sprite_lists()
         pass
 
-    """
-    TODO: CASTS THE MAGIC THAT INTERACTS BETWEEN ALL OF THE WALLS.
-
-    """
+    
     def cast_magic(self):
+        """
+        TODO: CASTS THE MAGIC THAT INTERACTS BETWEEN ALL OF THE WALLS.
+
+        """
         cast = self.cast
         zombies = cast["zombies"]
         walls = cast['walls']
@@ -52,6 +68,10 @@ class Wall(SpriteWithHealth):
         self._point_list = point_list
 
     def draw_magic(self):
+        """
+        Draws the red line between walls.
+
+        """
         cast = self.cast
         zombies = cast["zombies"]
         walls = cast['walls']

@@ -28,8 +28,9 @@ class TowerSprite(SpriteWithHealth):
         """ 
         Draw the tower health bar.
         
+        Args:
+            self (TowerSprite): an instance of TowerSprite
         """
-
         # Draw the 'unhealthy' background
         if self.cur_health <  self.max_health and self.cur_health > 0:
             arcade.draw_rectangle_filled(center_x= constants.TOWER_HEALTH_X,

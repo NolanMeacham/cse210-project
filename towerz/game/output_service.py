@@ -4,7 +4,9 @@ from game import constants
 import arcade
 
 class ArcadeOutputService:
-    """Outputs the game state. The responsibility of the class of objects is to draw the game state on the terminal. 
+    """Outputs the game state. 
+    The responsibility of the class of objects is to draw 
+    the game state on the terminal. 
     
     Stereotype: 
         Service Provider
@@ -17,6 +19,7 @@ class ArcadeOutputService:
         """The class constructor.
         
         Args:
+            self (ArcadeOutputService): an instance of the class
         """
         pass
         

@@ -92,4 +92,3 @@ class DrawActorsAction(Action):
         # self._output_service.draw_actor(score)
         
         # self._output_service.flush_buffer()
-

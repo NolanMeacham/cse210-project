@@ -3,10 +3,24 @@ from game import constants
 
 class SpriteWithHealth(arcade.Sprite):
     """ 
-    Sprite with hit points 
+    SpriteWithHealth is an arcade.Sprite and inherits attributes
+    and methods from the parent class.
+
+    Sprite with hit points, a base class to represent all sprites
+    that have health.
+
+    Stereotype:
+        ?
+
     """
 
     def __init__(self, image, scale, max_health):
+        """
+        Class constructor, calls the parent class constructor first.
+
+        Args:
+            self (SpriteWithHealth): an instance of SpriteWithHealth
+        """
         super().__init__(image, scale)
 
         # Add extra attributes for health
@@ -30,6 +44,9 @@ class SpriteWithHealth(arcade.Sprite):
     def draw_health_number(self):
         """
         Draw how many hit points we have 
+
+        Args:
+            self (SpriteWithHealth): an instnace of the class
         """
 
         health_string = f"{self.cur_health}"
@@ -40,30 +57,32 @@ class SpriteWithHealth(arcade.Sprite):
                          color=arcade.color.WHITE)
 
     def draw_health_bar(self):
-            """
-            Draw the health bar 
-            """
+        """
+        Draw the health bar 
 
-            # Draw the 'unhealthy' background
-            if self.cur_health <  self.max_health and self.cur_health > 0:
-                arcade.draw_rectangle_filled(center_x=self.center_x,
-                                            center_y=self.center_y + constants.HEALTHBAR_OFFSET_Y,
-                                            width=constants.HEALTHBAR_WIDTH,
-                                            height=3,
-                                            color=self.health_color)
+        Args:
+            self (SpriteWithHealth): an instance of the class
+        """
+        # Draw the 'unhealthy' background
+        if self.cur_health <  self.max_health and self.cur_health > 0:
+            arcade.draw_rectangle_filled(center_x=self.center_x,
+                                        center_y=self.center_y + constants.HEALTHBAR_OFFSET_Y,
+                                        width=constants.HEALTHBAR_WIDTH,
+                                        height=3,
+                                        color=self.health_color)
 
-                
+            
 
-            # Calculate width based on health
-            health_width = constants.HEALTHBAR_WIDTH * (self.cur_health / self.max_health)
-            if self.cur_health > 0:
-                arcade.draw_rectangle_filled(center_x=self.center_x - 0.5 * (constants.HEALTHBAR_WIDTH - health_width),
-                                        center_y=self.center_y - 10,
-                                        width=health_width,
-                                        height=constants.HEALTHBAR_HEIGHT,
-                                        color=arcade.color.GREEN)
-                arcade.draw_text(f"{self.cur_health}",
-                         self.center_x - 100, self.center_y - 30, arcade.color.WHITE, 14, width=200, align="center")
+        # Calculate width based on health
+        health_width = constants.HEALTHBAR_WIDTH * (self.cur_health / self.max_health)
+        if self.cur_health > 0:
+            arcade.draw_rectangle_filled(center_x=self.center_x - 0.5 * (constants.HEALTHBAR_WIDTH - health_width),
+                                    center_y=self.center_y - 10,
+                                    width=health_width,
+                                    height=constants.HEALTHBAR_HEIGHT,
+                                    color=arcade.color.GREEN)
+            arcade.draw_text(f"{self.cur_health}",
+                        self.center_x - 100, self.center_y - 30, arcade.color.WHITE, 14, width=200, align="center")
     
     def get_current_health(self):
         """
