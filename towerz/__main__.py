@@ -28,19 +28,12 @@ def main():
     # create the cast {key: tag, value: list}
     cast = {}
 
-    # add the hero
-    hero = Hero(cast)
-    cast["hero"] = [hero]
-    
-    melee = Melee(cast)
-    cast["melee"] = [melee]
-
-    # add the zombies
-    cast['zombies'] = arcade.SpriteList()
-
     # add the tower
     tower = TowerSprite()
     cast["tower"] = [tower]
+
+    # add the zombies
+    cast['zombies'] = arcade.SpriteList()    
 
     # add the wall
     cast["walls"] = arcade.SpriteList()
@@ -53,6 +46,13 @@ def main():
 
     # add the resources
     cast['resources'] = arcade.SpriteList()
+
+    # add the hero
+    hero = Hero(cast)
+    cast["hero"] = [hero]
+    
+    melee = Melee(cast)
+    cast["melee"] = [melee]
 
     # add the score
     score = Score()
