@@ -12,6 +12,16 @@ class TowerzView(arcade.View):
         self._cast = cast
         self._script = script
         self._input_service = input_service
+    def on_show(self):
+        self._cast["zombies"] = arcade.SpriteList()
+        self._cast["walls"] = arcade.SpriteList()
+        self._cast["resource_counter"][0].cur_health = 0
+        self._cast["hero"][0].cur_health = 100
+        self._cast["hero"][0].center_x = int(constants.MAX_X / 2)
+        self._cast["hero"][0].center_y = int(constants.HERO_Y)
+        self._cast["score"][0].set_points(0)
+        for resource in self._cast["resources"]:
+            resource.cur_health = 0
 
     def setup(self):
         arcade.set_background_color(arcade.color.BLACK)
@@ -19,8 +29,10 @@ class TowerzView(arcade.View):
     def on_update(self, delta_time):
         self._cue_action("update")
 
+
     def on_draw(self):
         self._cue_action("output")
+        
 
     def on_key_press(self, symbol, modifiers):
         self._input_service.set_key(symbol, modifiers)

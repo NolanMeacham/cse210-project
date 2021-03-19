@@ -55,3 +55,7 @@ class Score():
             points (int): the number of points to be added to the score.
         """
         self._score += points
+
+    def set_points(self, score):
+
+        self._score = score
