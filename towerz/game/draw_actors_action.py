@@ -25,14 +25,25 @@ class DrawActorsAction(Action):
         """Executes the action using the given actors.
 
         Args:
-            cast (dict): The game actors {key: tag, value: list}.
+            self (DrawActorsAction): an instance of DrawActorsAction
+            cast (dict): The game actors {key: tag, value: list}
         """
         self._output_service.clear_screen()
 
         # Draw each actor in the cast
         for key, actors in cast.items():
             for actor in actors:
-                actor.draw()
+                self._output_service.draw_actor(actor)
+        
+        self._output_service.flush_buffer()
+
+
+        melee = cast['melee'][0]
+        walls = cast['walls']
+        melee.shealth_melee()
+        if len(walls) > 2:
+            for wall in walls:
+                wall.draw_magic()
             
 
         # hero = cast["hero"][0] # there's only one
@@ -80,5 +91,5 @@ class DrawActorsAction(Action):
 
         # self._output_service.draw_actor(score)
         
-        self._output_service.flush_buffer()
+        # self._output_service.flush_buffer()
 
