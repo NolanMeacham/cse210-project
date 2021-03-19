@@ -3,12 +3,32 @@ from game import constants
 from game.input_service import ArcadeInputService
 import time
 class Melee(arcade.Sprite):
+    """
+    """
     def __init__(self,cast):
+        """
+        Class constructor.
+        Calls the constructor of the parent class.
+
+        Args:
+            self (Melee): an instance of Melee
+            cast (dict): dictionary that holds all the actors
+
+        """
         super().__init__(constants.HERO_IMAGE, 1,image_height=10, image_width=15)
         self.offset = 0
         self.cast = cast
         self.timer = time.time()
+
+
     def attack(self):
+        """
+        Attack method. Attacks zombies.
+
+        Args:
+            self (Melee): an instance of Melee
+
+        """
         if time.time() - self.timer >= 0.25:
             self.timer = time.time()
             for zombie in self.cast['zombies']:
@@ -24,29 +44,22 @@ class Melee(arcade.Sprite):
                     if self.cast["resource_counter"][0].cur_health < 100:
 
                         self.cast["resource_counter"][0].cur_health += 10
-
-
         else:
             pass
 
 
-
-
-
     def shealth_melee(self):
+        """
+        Sheath
+
+        Args:
+            self (Melee): an instance of Melee
+
+        """
         hero = self.cast['hero'][0]
         x = hero.center_x
         y = hero.center_y
          
         self.center_y = y 
         self.center_x = x 
-
-
-        
-
-        
-        
-
-
-    
-        
+ 

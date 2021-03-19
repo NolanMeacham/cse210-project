@@ -6,13 +6,29 @@ from game.towerz import TowerzView
 from game.add_enemy import Add_enemy
 
 class HandleLoseOrWinAction(Action):
-
+    """
+    """
     def __init__(self, window, start_screen):
+        """
+        Class constructor
+
+        Args:
+            self ():
+            window ():
+            start_screen ():
+        """
         self.window = window
         self.start = start_screen
 
     
     def execute(self, cast):
+        """
+        Implements the execute method from Action class.
+
+        Args:
+            self ():
+            cast (dict):
+        """
         tower = cast['tower'][0]
         zombies = cast['zombies']
         resource = cast['resource_counter'][0]

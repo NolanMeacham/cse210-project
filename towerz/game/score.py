@@ -57,5 +57,11 @@ class Score():
         self._score += points
 
     def set_points(self, score):
+        """
+        Sets the score to the given value.
 
+        Args:
+            self (Score): an instance of Score.
+            score (int): the value used to reset the score.
+        """
         self._score = score
