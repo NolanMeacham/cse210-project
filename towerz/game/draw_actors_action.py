@@ -29,6 +29,11 @@ class DrawActorsAction(Action):
         """
         self._output_service.clear_screen()
 
+        for key, actors in cast.items():
+            for actor in actors:
+                actor.draw()
+            
+
         hero = cast["hero"][0] # there's only one
         zombies = cast['zombies']
         melee = cast['melee'][0]

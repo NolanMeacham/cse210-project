@@ -54,4 +54,24 @@ class SpriteWithHealth(arcade.Sprite):
                          self.center_x - 100, self.center_y - 30, arcade.color.WHITE, 14, width=200, align="center")
     
     def get_current_health(self):
+        """
+        Get the Sprite's current health.
+
+        Args:
+            self (SpriteWithHealth): an instance of SpriteWithHealth
+
+        Returns:
+            cur_health (int): the Sprite's current health
+        """
         return self.cur_health
+
+    def set_current_health(self, health):
+        """
+        Updates the current health by adding the given value,
+        which can also be negative numbers.
+
+        Args:
+            self (SpriteWithHealth): an instance of SpriteWithHealth
+            health (int): a positive or negative value used to update the current health
+        """
+        self.cur_health += health
