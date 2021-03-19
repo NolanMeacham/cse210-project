@@ -74,6 +74,18 @@ class Turret(SpriteWithHealth):
 
             arcade.play_sound(new_bullet.bullet_sound)
 
+    # def draw(self):
+    #     """
+    #     Overrides the Sprite.draw() method.
+    #     First calls the original draw method, 
+    #     then calls the draw_health methods from the parent class.
+
+    #     Args:
+    #         self (Turret): an instance of Turret
+    #     """
+    #     super().draw()
+    #     self.draw_health_bar()
+    #     self.draw_health_number()
         
     def on_update(self):
         """

@@ -10,6 +10,15 @@ class ResourceCounter(SpriteWithHealth):
         self.health_color = arcade.color.PURPLE
         self.cur_health = 0
 
+    def draw(self):
+        """
+        Override the draw method
+
+        Args:
+            self (ResourceCounter): an instance of ResourceCounter
+        """
+        self.draw_health_bar()
+
     def draw_health_bar(self):
             """
             Draw the health bar 
