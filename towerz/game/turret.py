@@ -34,6 +34,22 @@ class Turret(SpriteWithHealth):
         self.timer = time.time()
         self.cast = cast
 
+    
+    def on_update(self):
+        """
+        Updates the turrets health based on the time elapsed.
+        This makes it so the tower loses 1 health point every 1.5 seconds.
+        It also calls the attack_enemy method.
+
+        Args:
+            self (Turret): an instance of Turret.
+        """
+        if time.time() - self.timer > 1.5:
+            self.attack_enemy()
+            self.timer = time.time()
+            self.cur_health -= 1
+
+    
     def attack_enemy(self):
         """
         Searches for a nearby enemy and shoots the enemy with a bullet.
@@ -74,29 +90,3 @@ class Turret(SpriteWithHealth):
 
             arcade.play_sound(new_bullet.bullet_sound)
 
-    # def draw(self):
-    #     """
-    #     Overrides the Sprite.draw() method.
-    #     First calls the original draw method, 
-    #     then calls the draw_health methods from the parent class.
-
-    #     Args:
-    #         self (Turret): an instance of Turret
-    #     """
-    #     super().draw()
-    #     self.draw_health_bar()
-    #     self.draw_health_number()
-        
-    def on_update(self):
-        """
-        Updates the turrets health based on the time elapsed.
-        This makes it so the tower loses 1 health point every 1.5 seconds.
-        It also calls the attack_enemy method.
-
-        Args:
-            self (Turret): an instance of Turret.
-        """
-        if time.time() - self.timer > 1.5:
-            self.attack_enemy()
-            self.timer = time.time()
-            self.cur_health -= 1
