@@ -47,6 +47,11 @@ class ArcadeInputService:
         if arcade.key.SPACE in self._keys:
             return True
 
+    def is_instruction(self):
+
+        if arcade.key.I in self._keys:
+            return True
+
     def is_building(self):
         """
         """
