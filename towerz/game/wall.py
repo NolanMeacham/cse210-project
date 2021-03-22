@@ -31,6 +31,8 @@ class Wall(SpriteWithHealth):
         self.alive = True
         self._point_list = []
         # self.wall_connector = WallConnector()
+
+    
    
     def get_hit(self):
         """

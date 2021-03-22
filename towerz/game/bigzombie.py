@@ -21,10 +21,11 @@ class BigZombie(Zombie):
             cast (dict): dictionary that holds all actors in the game
         """
         super().__init__(x, y, cast)
+        self.max_health = 200
+        self.cur_health = 200
         self.scale = 0.5
         self.center_x = x
         self.center_y = y
         self.cast = cast
         self.score_points = 50
-        self.max_health = 200
-        
+

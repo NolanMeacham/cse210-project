@@ -34,6 +34,8 @@ class Add_enemy(Action):
             arcade.unschedule(self.create_zombie)
 
 
+
+
     def create_zombie(self, delta_time: float):
         """Adds a new enemy to the screen
 
@@ -57,19 +59,23 @@ class Add_enemy(Action):
             random_x =  random.randint(0 , constants.MAX_X)
             random_y = constants.MAX_Y - 20
 
-        zombie = Zombie(random_x, random_y, self.cast)
+        #After 5 seconds, start spawning regular zombies every 3 seconds
+        if time.time() - self.timer >= 30 :
+            if ran == 1:
+                big_zombie = BigZombie(random_x,random_y, self.cast)
+                self.cast['zombies'].append(big_zombie)
+            elif ran == 2 or ran == 3 or ran == 4:
+                zombie = Zombie(random_x, random_y, self.cast)
+                self.cast['zombies'].append(zombie)
 
-        if time.time() - self.timer >= 25:
-            new_zombie = BigZombie(random_x,random_y, self.cast)
-            self.cast['zombies'].append(new_zombie)
-        
-        self.cast['zombies'].append(zombie)
-
+        else:
+            zombie = Zombie(random_x, random_y, self.cast)
+            self.cast['zombies'].append(zombie)
 
     def begin_spawn(self):
         """
         """
-        arcade.schedule(self.create_zombie, 4.0)
+        arcade.schedule(self.create_zombie, 3.0)
 
     def make_resource(self):
         """
