@@ -22,7 +22,8 @@ class Wall(SpriteWithHealth):
             
         """
         super().__init__(constants.WALL_IMAGE, constants.WALL_SCALING, 10)
-
+        
+        
         self.center_x = x
         self.center_y = y
         self.cast = cast
@@ -32,7 +33,11 @@ class Wall(SpriteWithHealth):
         self._point_list = []
         # self.wall_connector = WallConnector()
 
-    
+    def draw(self):
+        super().draw()
+
+    def draw_health_bar(self):
+        pass
    
     def get_hit(self):
         """

@@ -64,7 +64,7 @@ class StartView(arcade.View):
     
     def on_key_press(self, symbol, modifiers):
         
-        game_view = InstructionView()
+        game_view = InstructionView(self)
         self.window.show_view(game_view)
 
 

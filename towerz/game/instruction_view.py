@@ -4,9 +4,10 @@ from game import constants
 
 class InstructionView(arcade.View):
 
-    def __init__(self):
+    def __init__(self, start):
 
         super().__init__()
+        self.start = start
 
     def on_show(self):
         arcade.set_background_color(arcade.csscolor.DARK_SLATE_BLUE)
@@ -26,7 +27,7 @@ class InstructionView(arcade.View):
         arcade.draw_text("Press any key to return to start screen", constants.MAX_X / 2, constants.MAX_Y / 2-100,
                          arcade.color.WHITE, font_size=20, anchor_x="center")
 
-    # def on_key_press(self, symbol, modifiers):
+    def on_key_press(self, symbol, modifiers):
         
-    #     game_view = StartView()
-    #     self.window.show_view(game_view)
+        game_view = self.start
+        self.window.show_view(game_view)
