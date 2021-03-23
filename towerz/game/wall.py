@@ -1,8 +1,7 @@
-from arcade.color import BLIZZARD_BLUE
-from game.point import Point
+from game.wall_magic import WallMagic
 from game import constants
 from game.sprite_with_health import SpriteWithHealth
-# from game.wall_connector import WallConnector
+import numpy as np
 import arcade
 import time
 
@@ -31,7 +30,6 @@ class Wall(SpriteWithHealth):
         self._lifetime = constants.WALL_LIFETIME
         self.alive = True
         self._point_list = []
-        # self.wall_connector = WallConnector()
 
     def draw(self):
         super().draw()
@@ -73,8 +71,10 @@ class Wall(SpriteWithHealth):
             point_list.append(point)
         point_list.append(point_list[0])
         self._point_list = point_list
+        self.add_magic_to_cast()
 
-    def draw_magic(self):
+
+    def add_magic_to_cast(self):
         """
         Draws the red line between walls.
 
@@ -83,9 +83,12 @@ class Wall(SpriteWithHealth):
         zombies = cast["zombies"]
         walls = cast['walls']
         if len(self._point_list) >= 2:
-            # self.make_wall_sprite()
-            arcade.draw_line_strip(self._point_list, arcade.color.RED, 7)
-            
+            point_list = self._point_list
+            for i in self._point_list:                
+                lightning = WallMagic(point_list)
+                self.cast["magic"].append(lightning)
+                np.roll(point_list,1)
+                point_list.tolist()
         # self._point_list = []
 
         

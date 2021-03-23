@@ -32,6 +32,7 @@ class Zombie(SpriteWithHealth):
         self.alive = True
         self.cast = cast
         self.score_points = 10
+        self.speed = constants.ZOMBIE_SPEED
 
 
     def attack_tower(self):
@@ -58,8 +59,8 @@ class Zombie(SpriteWithHealth):
 
         # Taking into account the angle, calculate our change_x
         # and change_y. Velocity is how fast the bullet travels.
-        self.change_x = math.cos(angle) * constants.ZOMBIE_SPEED
-        self.change_y = math.sin(angle) * constants.ZOMBIE_SPEED
+        self.change_x = math.cos(angle) * self.speed
+        self.change_y = math.sin(angle) * self.speed
     
     def zombie_attack(self):
         """

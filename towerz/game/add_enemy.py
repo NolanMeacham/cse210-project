@@ -16,8 +16,11 @@ class Add_enemy(Action):
         """
         Class constructor.
         """
+        self.spawn_difficulty = constants.DIFFICULTY
+        self.speed_difficulty = constants.DIFFICULTY
         self.begin_spawn()
         self.timer = time.time()
+        
 
 
     def execute(self, cast):
@@ -32,6 +35,11 @@ class Add_enemy(Action):
         
         if tower.cur_health <= 0:
             arcade.unschedule(self.create_zombie)
+            self.spawn_difficulty = constants.DIFFICULTY
+            self.speed_difficulty = constants.DIFFICULTY
+        else:
+            self.spawn_difficulty += constants.SPAWN_DIFFICULTY_MODIFIER
+            self.speed_difficulty += constants.SPEED_DIFFICULTY_MODIFIER
 
 
 
@@ -63,19 +71,22 @@ class Add_enemy(Action):
         if time.time() - self.timer >= 30 :
             if ran == 1:
                 big_zombie = BigZombie(random_x,random_y, self.cast)
+                big_zombie.speed *= self.speed_difficulty
                 self.cast['zombies'].append(big_zombie)
             elif ran == 2 or ran == 3 or ran == 4:
                 zombie = Zombie(random_x, random_y, self.cast)
+                zombie.speed *= self.speed_difficulty
                 self.cast['zombies'].append(zombie)
 
         else:
             zombie = Zombie(random_x, random_y, self.cast)
+            zombie.speed *= self.speed_difficulty
             self.cast['zombies'].append(zombie)
 
     def begin_spawn(self):
         """
         """
-        arcade.schedule(self.create_zombie, 3.0)
+        arcade.schedule(self.create_zombie, 3.0 / self.spawn_difficulty)
 
     def make_resource(self):
         """
