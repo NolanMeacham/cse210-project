@@ -58,8 +58,8 @@ ZOMBIE_HIT = .1
 #wall
 WALL_SCALING = 1
 WALL_LIFETIME = 7
-WALL_MAGIC_IMG = 'towerz/images/lighning.png'
-WALL_MAGIC_SCALING = .5
+WALL_MAGIC_IMG = 'towerz/images/lightning.png'
+WALL_MAGIC_SCALING = .1
 
 #Resource
 RESOURCE_IMAGE = "towerz/images/crystal2.png"

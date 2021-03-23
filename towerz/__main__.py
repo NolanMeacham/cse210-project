@@ -62,6 +62,9 @@ def main():
     resource_counter = ResourceCounter(200,50)
     cast['resource_counter'] = [resource_counter]
 
+    # add the magic
+    cast['magicks'] = []
+
 
     # create the script {key: tag, value: list}
     script = {}

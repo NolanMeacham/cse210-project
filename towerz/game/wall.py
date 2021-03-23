@@ -71,10 +71,10 @@ class Wall(SpriteWithHealth):
             point_list.append(point)
         point_list.append(point_list[0])
         self._point_list = point_list
-        self.add_magic_to_cast()
+        self.draw_magic()
 
 
-    def add_magic_to_cast(self):
+    def draw_magic(self):
         """
         Draws the red line between walls.
 
@@ -84,11 +84,12 @@ class Wall(SpriteWithHealth):
         walls = cast['walls']
         if len(self._point_list) >= 2:
             point_list = self._point_list
-            for i in self._point_list:                
+            for i in range(2):                
                 lightning = WallMagic(point_list)
-                self.cast["magic"].append(lightning)
-                np.roll(point_list,1)
+                point_list = np.roll(point_list, 1)
                 point_list.tolist()
+                if len(self.cast["magicks"]) < 4:
+                    self.cast["magicks"].append(lightning)
         # self._point_list = []
 
         
