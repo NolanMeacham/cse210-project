@@ -1,4 +1,5 @@
 import arcade
+import time
 from game import constants
 
 
@@ -21,7 +22,30 @@ class TowerzView(arcade.View):
         self._cast = cast
         self._script = script
         self._input_service = input_service
+        self.music_list = constants.BACKGROUND_MUSIC
+        self.current_song_index = 0
+        self.current_player = None
+        self.music = None
+        self.play_song()
 
+    def advance_song(self):
+        """ Advance our pointer to the next song. This does NOT start the song. """
+        self.current_song_index += 1
+        if self.current_song_index >= len(self.music_list):
+            self.current_song_index = 0
+    
+    def play_song(self):
+        """ Play the song. """
+        # Stop what is currently playing.
+        if self.music:
+            self.music.stop()
+        # Play the next song
+        self.music = arcade.Sound(self.music_list[self.current_song_index], streaming=True)
+        self.current_player = self.music.play(constants.MUSIC_VOLUME)
+        # This is a quick delay. If we don't do this, our elapsed time is 0.0
+        # and on_update will think the music is over and advance us to the next
+        # song before starting this one.
+        time.sleep(0.03)
 
     def on_show(self):
         """
