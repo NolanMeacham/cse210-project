@@ -28,7 +28,9 @@ class TowerzView(arcade.View):
 
         Args:
             self (Towerz): an instance of Towerz
+
         """
+
         self._cast["zombies"] = arcade.SpriteList()
         self._cast["walls"] = arcade.SpriteList()
         self._cast["resource_counter"][0].cur_health = 0
@@ -36,8 +38,11 @@ class TowerzView(arcade.View):
         self._cast["hero"][0].center_x = int(constants.MAX_X / 2)
         self._cast["hero"][0].center_y = int(constants.HERO_Y)
         self._cast["score"][0].set_points(0)
+        self._cast["bullets"] = []
+        self._cast["turrets"] = arcade.SpriteList()
         for resource in self._cast["resources"]:
             resource.cur_health = 0
+
 
     def setup(self):
         """
@@ -46,7 +51,7 @@ class TowerzView(arcade.View):
             self (Towerz): an instance of Towerz
         """
         arcade.set_background_color(arcade.color.BLACK)
-
+     
 
     def on_update(self, delta_time):
         """
@@ -58,12 +63,14 @@ class TowerzView(arcade.View):
         self._cue_action("update")
 
 
+
     def on_draw(self):
         """
 
         Args:
             self (Towerz): an instance of Towerz
         """
+       
         self._cue_action("output")
         
 

@@ -29,6 +29,9 @@ def main():
     cast = {}
 
     # add the tower
+
+   
+
     tower = TowerSprite()
     cast["tower"] = [tower]
 

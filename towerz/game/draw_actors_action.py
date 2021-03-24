@@ -20,6 +20,7 @@ class DrawActorsAction(Action):
             _output_service (OutputService): An instance of OutputService.
         """
         self._output_service = output_service
+        self.background = arcade.load_texture(constants.BACKGROUND)
 
     def execute(self, cast):
         """Executes the action using the given actors.
@@ -29,10 +30,15 @@ class DrawActorsAction(Action):
             cast (dict): The game actors {key: tag, value: list}
         """
         self._output_service.clear_screen()
+        
 
         # Draw each actor in the cast
+        arcade.draw_lrwh_rectangle_textured(0, 0,
+                                            constants.MAX_X, constants.MAX_Y,
+                                            self.background)
         for key, actors in cast.items():
             for actor in actors:
+    
                 self._output_service.draw_actor(actor)
         
         self._output_service.flush_buffer()

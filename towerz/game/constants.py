@@ -3,6 +3,7 @@ HERO_MOVE_SCALE = 4
 HERO_IMAGE = "towerz/images/blue_rectangle.png"
 ZOMBIE_IMAGE = "towerz/images/red_rectangle.png"
 WALL_IMAGE = "towerz/images/wall_h.png"
+BACKGROUND = "towerz/images/background.png"
 HERO_Y = 100
 
 MAX_X = 1200
