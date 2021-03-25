@@ -106,3 +106,33 @@ class SpriteWithHealth(arcade.Sprite):
             health (int): a positive or negative value used to update the current health
         """
         self.cur_health += health
+
+    def load_texture_pair(self, filename):
+        """
+        Load a texture pair, with the second being a mirror image.
+        """
+        return [(arcade.load_texture(filename)), (arcade.load_texture(filename, flipped_horizontally=True))]
+        
+
+    def update_animation(self, delta_time: float = 1/60):
+
+        # # Figure out if we need to flip face left or right
+        # if self.change_x < 0 and self.character_face_direction == constants.RIGHT_FACING:
+        #     self.character_face_direction = constants.LEFT_FACING
+        # elif self.change_x > 0 and self.character_face_direction == constants.LEFT_FACING:
+        #     self.character_face_direction = constants.RIGHT_FACING
+
+        # # Idle animation
+        # if self.change_x == 0 and self.change_y == 0:
+        #     self.texture = self.idle_texture_pair[self.character_face_direction]
+        #     return
+
+        # # Walking animation
+        # self.cur_texture += 1
+        # if self.cur_texture > 7 * constants.UPDATES_PER_FRAME:
+        #     self.cur_texture = 0
+        # frame = self.cur_texture // constants.UPDATES_PER_FRAME
+        # direction = self.character_face_direction
+        # self.texture = self.walk_textures[frame][direction]
+        pass
+                

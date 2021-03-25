@@ -63,6 +63,7 @@ class TowerzView(arcade.View):
             self (Towerz): an instance of Towerz
             delta_time (): the time between each method call
         """
+        # self._cast['hero'][0].update_animation()
         self._cue_action("update")
 
 

@@ -22,15 +22,46 @@ class Hero(SpriteWithHealth):
             self (Hero): an instance of Hero
             cast (dict): dictionary that holds all the actors in the game
         """
-        super().__init__(constants.HERO_IMAGE, constants.HERO_SCALING, 100)
+        super().__init__(constants.HERO_IMAGE, 2, 100)
 
         self.center_x = int(constants.MAX_X / 2)
         self.center_y = int(constants.HERO_Y)
         self.cast = cast
         self._position_list = []
         self.change_angle = 45
+        # self.texture = arcade.load_texture(constants.HERO_IMAGE)
+        self.alive = True   
 
-        self.alive = True
+        # Default to face-right
+        self.character_face_direction = constants.RIGHT_FACING
+
+        # Used for flipping between image sequences
+        self.cur_texture = 0
+        self.cur_texture1 = 0
+
+        # Adjust the collision box. Default includes too much empty space
+        # side-to-side. Box is centered at sprite center, (0, 0)
+
+        self.points = [[-8, -20], [8, -20], [8, 20], [-8, 20]]
+
+        # --- Load Textures ---
+
+        main_path = "towerz/images/adventurer"
+ 
+
+        # Load textures for idle standing
+        self.idle_textures = []
+        for i in range(3):
+            texture = self.load_texture_pair(f'{main_path}-idle-2-0{i+1}.png')
+            self.idle_textures.append(texture)
+        
+        # Load texures for running
+        self.run_textures = []
+        for i in range(5):
+            texture = self.load_texture_pair(f'{main_path}-run-0{i+1}.png')
+            self.run_textures.append(texture)
+        
+
 
 
     def draw_health_bar(self):
@@ -99,4 +130,36 @@ class Hero(SpriteWithHealth):
         y = self._get_center_y()
         turret = Turret(x, y, self.cast)
         self.cast['turrets'].append(turret)
-            
+
+
+    def update_animation(self, delta_time: float = 1/60):
+
+        # Figure out if we need to flip face left or right
+        if self.change_x < 0 and self.character_face_direction == constants.RIGHT_FACING:
+            self.character_face_direction = constants.LEFT_FACING
+        elif self.change_x > 0 and self.character_face_direction == constants.LEFT_FACING:
+            self.character_face_direction = constants.RIGHT_FACING
+
+        # Idle animation
+        self.cur_texture1 += 1
+        if self.cur_texture1 >= 4 * constants.UPDATES_PER_FRAME:
+            self.cur_texture1 = 0
+        if self.change_x == 0 and self.change_y == 0:
+            frame = self.cur_texture1 // constants.UPDATES_PER_FRAME
+            direction = self.character_face_direction
+            self.texture = self.idle_textures[frame-1][direction]
+            return
+
+
+        if self.cur_texture >= 5 * constants.UPDATES_PER_FRAME:
+            self.cur_texture = 0
+        frame = self.cur_texture // constants.UPDATES_PER_FRAME
+        direction = self.character_face_direction
+        self.texture = self.run_textures[frame][direction]
+
+        self.cur_texture += 1
+
+
+        # Walking animation
+        
+        

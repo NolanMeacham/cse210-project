@@ -38,7 +38,7 @@ class DrawActorsAction(Action):
                                             self.background)
         for key, actors in cast.items():
             for actor in actors:
-    
+                actor.update_animation()
                 self._output_service.draw_actor(actor)
         
         self._output_service.flush_buffer()
@@ -46,10 +46,12 @@ class DrawActorsAction(Action):
 
         melee = cast['melee'][0]
         walls = cast['walls']
-        melee.shealth_melee()
+        # melee.shealth_melee()
         if len(walls) > 2:
             for wall in walls:
                 wall.draw_magic()
+
+
             
 
         # hero = cast["hero"][0] # there's only one

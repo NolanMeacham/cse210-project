@@ -6,6 +6,11 @@ WALL_IMAGE = "towerz/images/wall_h.png"
 BACKGROUND = "towerz/images/background.png"
 HERO_Y = 100
 
+UPDATES_PER_FRAME = 10
+
+RIGHT_FACING = 0
+LEFT_FACING = 1
+
 MAX_X = 1200
 MAX_Y = 800
 HERO_SCALING = 0.01

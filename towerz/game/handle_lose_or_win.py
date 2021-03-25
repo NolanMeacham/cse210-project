@@ -6,8 +6,7 @@ from game.towerz import TowerzView
 from game.add_enemy import Add_enemy
 
 class HandleLoseOrWinAction(Action):
-    """
-    """
+
     def __init__(self, window, start_screen):
         """
         Class constructor
@@ -22,13 +21,6 @@ class HandleLoseOrWinAction(Action):
 
     
     def execute(self, cast):
-        """
-        Implements the execute method from Action class.
-
-        Args:
-            self ():
-            cast (dict):
-        """
         tower = cast['tower'][0]
         zombies = cast['zombies']
         resource = cast['resource_counter'][0]
@@ -41,8 +33,7 @@ class HandleLoseOrWinAction(Action):
             for turret in turrets:
                 turret.remove_from_sprite_lists()
             
-            resource.cur_health = 0
-            hero.cur_health = 100
+
 
             death_screen = DeathView(self.start, tower)
             self.window.show_view(death_screen)

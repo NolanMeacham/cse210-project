@@ -65,3 +65,6 @@ class Score():
             score (int): the value used to reset the score.
         """
         self._score = score
+
+    def update_animation(self):
+        pass
