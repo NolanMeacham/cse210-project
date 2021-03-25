@@ -37,6 +37,7 @@ class Hero(SpriteWithHealth):
 
         # Used for flipping between image sequences
         self.cur_texture = 0
+        self.cur_texture1 = 0
 
         # Adjust the collision box. Default includes too much empty space
         # side-to-side. Box is centered at sprite center, (0, 0)
@@ -140,24 +141,24 @@ class Hero(SpriteWithHealth):
             self.character_face_direction = constants.RIGHT_FACING
 
         # Idle animation
-        # self.cur_texture += 1
-        if self.cur_texture >= 4 * constants.UPDATES_PER_FRAME:
-            self.cur_texture = 0
+        self.cur_texture1 += 1
+        if self.cur_texture1 >= 4 * constants.UPDATES_PER_FRAME:
+            self.cur_texture1 = 0
         if self.change_x == 0 and self.change_y == 0:
-            frame = self.cur_texture // constants.UPDATES_PER_FRAME
+            frame = self.cur_texture1 // constants.UPDATES_PER_FRAME
             direction = self.character_face_direction
             self.texture = self.idle_textures[frame-1][direction]
             return
 
-        
-        if self.cur_texture > 7 * constants.UPDATES_PER_FRAME:
+
+        if self.cur_texture >= 5 * constants.UPDATES_PER_FRAME:
             self.cur_texture = 0
         frame = self.cur_texture // constants.UPDATES_PER_FRAME
         direction = self.character_face_direction
         self.texture = self.run_textures[frame][direction]
 
         self.cur_texture += 1
-            
+
 
         # Walking animation
         
