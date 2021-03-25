@@ -30,6 +30,7 @@ class MoveActorsAction(Action):
 
                 # if actor.change_x != 0 or actor.change_y != 0:
                 self._move_actor(actor)
+                
 
 
     def _move_actor(self, actor):
