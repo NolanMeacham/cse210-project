@@ -26,6 +26,7 @@ class TowerzView(arcade.View):
         self.music.add_song_list(constants.BACKGROUND_MUSIC)
         self.music.play_song_looped()
 
+
     def on_show(self):
         """
 
@@ -33,7 +34,7 @@ class TowerzView(arcade.View):
             self (Towerz): an instance of Towerz
 
         """
-
+        # Reinitializes all game components when game is shown. This ensures that the restart works correctly
         self._cast["zombies"] = arcade.SpriteList()
         self._cast["walls"] = arcade.SpriteList()
         self._cast["resource_counter"][0].cur_health = 0
@@ -43,6 +44,8 @@ class TowerzView(arcade.View):
         self._cast["score"][0].set_points(0)
         self._cast["bullets"] = []
         self._cast["turrets"] = arcade.SpriteList()
+        self._script["update"][3].count = 0
+        self._script["update"][3].wave = "Wave 1"
         for resource in self._cast["resources"]:
             resource.cur_health = 0
 
@@ -54,6 +57,7 @@ class TowerzView(arcade.View):
             self (Towerz): an instance of Towerz
         """
         arcade.set_background_color(arcade.color.BLACK)
+        
      
 
     def on_update(self, delta_time):
@@ -65,8 +69,9 @@ class TowerzView(arcade.View):
         """
         # self._cast['hero'][0].update_animation()
         self._cue_action("update")
-        #if self.music.is_playing() == False:
-            #self.music.play_song()
+
+        self._script["output"][0]._add_enemy = self._script["update"][3]
+
 
 
     def on_draw(self):

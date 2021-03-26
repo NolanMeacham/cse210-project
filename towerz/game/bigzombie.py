@@ -23,7 +23,7 @@ class BigZombie(Zombie):
         super().__init__(x, y, cast)
         self.max_health = 200
         self.cur_health = 200
-        self.scale = 0.5
+        self.scale = 2
         self.center_x = x
         self.center_y = y
         self.cast = cast
