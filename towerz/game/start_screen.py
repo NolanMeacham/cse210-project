@@ -21,6 +21,7 @@ class StartView(arcade.View):
         self.cast = cast
         self.script = script
         self.input_service = input_service
+        self.background = arcade.load_texture('towerz/images/start_screen.PNG')
 
     def on_show(self):
         """
@@ -39,11 +40,14 @@ class StartView(arcade.View):
             self (StartView): an instance of StartView
         """
         arcade.start_render()
-        arcade.draw_text("Start Screen", constants.MAX_X / 2, constants.MAX_Y / 2,
+        arcade.draw_lrwh_rectangle_textured(0, 0,
+                                            constants.MAX_X, constants.MAX_Y,
+                                            self.background)
+        arcade.draw_text("Towerz", 150, 700,
                          arcade.color.WHITE, font_size=50, anchor_x="center")
-        arcade.draw_text("Click Anywhere To Play", constants.MAX_X / 2, constants.MAX_Y / 2-75,
+        arcade.draw_text("Click Anywhere To Play", 1000, 100,
                          arcade.color.WHITE, font_size=20, anchor_x="center")
-        arcade.draw_text("Press any key for instructions", constants.MAX_X /2, constants.MAX_Y /2 -100, 
+        arcade.draw_text("Press any key for instructions", 1000, 50, 
                          arcade.color.WHITE, font_size=20, anchor_x="center")
             
     def on_mouse_press(self, _x, _y, _button, _modifiers):

@@ -56,11 +56,12 @@ class Add_enemy(Action):
                 arcade.unschedule(self.create_zombie)
                 self.first_time = 0
             if self.can_run == True:
-                
-                if time.time() - self.wave_timer >= 10:
-                    self.begin_spawn()
-                    self.can_run = False
-                    self.wave = "Wave 2"
+                if len(self.cast['zombies']) == 0:
+                    if time.time() - self.wave_timer >= 10:
+                    
+                        self.begin_spawn()
+                        self.can_run = False
+                        self.wave = "Wave 2"
             return self.wave
         elif self.count >= 20 and self.count <= 39:
             if self.first_time == 0:
@@ -69,11 +70,12 @@ class Add_enemy(Action):
                 self.first_time = 1
                 self.can_run = True
             if self.can_run == True:
-                
-                if time.time() - self.wave_timer >= 15:
-                    self.begin_spawn()
-                    self.can_run = False
-                    self.wave = "Wave 3"
+                if len(self.cast['zombies']) == 0:
+                    if time.time() - self.wave_timer >= 15:
+                    
+                        self.begin_spawn()
+                        self.can_run = False
+                        self.wave = "Wave 3"
             return self.wave
         elif self.count >= 40 and self.count <= 65:
             if self.first_time == 1:
@@ -82,11 +84,12 @@ class Add_enemy(Action):
                 self.first_time = 0
                 self.can_run = True
             if self.can_run == True:
+                if len(self.cast['zombies']) == 0:
+                    if time.time() - self.wave_timer >= 15:
                 
-                if time.time() - self.wave_timer >= 15:
-                    self.begin_spawn()
-                    self.can_run = False
-                    self.wave = "Wave 4"
+                        self.begin_spawn()
+                        self.can_run = False
+                        self.wave = "Wave 4"
             return self.wave
         elif self.count >= 65 and self.count <= 100:
             if self.first_time == 0:
@@ -95,14 +98,16 @@ class Add_enemy(Action):
                 self.first_time = 1
                 self.can_run = True
             if self.can_run == True:
-                
-                if time.time() - self.wave_timer >= 20:
-                    self.begin_spawn()
-                    self.can_run = False
-                    self.wave = "Wave 5"
+                if len(self.cast['zombies']) == 0:
+                    if time.time() - self.wave_timer >= 20:
+                    
+                        self.begin_spawn()
+                        self.can_run = False
+                        self.wave = "Wave 5"
             return self.wave
         elif self.count >= 100:
-            return 'SURVIVAL'
+            if len(self.cast['zombies']) == 0:
+                return 'SURVIVAL'
 
 
         

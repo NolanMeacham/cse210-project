@@ -27,5 +27,5 @@ class BigZombie(Zombie):
         self.center_x = x
         self.center_y = y
         self.cast = cast
-        self.score_points = 50
+        self.score_points = constants.BIG_ZOMBIE_POINTS
 

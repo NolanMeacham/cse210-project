@@ -31,7 +31,7 @@ class Zombie(SpriteWithHealth):
         self.center_y = y
         self.alive = True
         self.cast = cast
-        self.score_points = 10
+        self.score_points = constants.ZOMBIE_POINTS
         self.speed = constants.ZOMBIE_SPEED
         self.count = 0
         
@@ -135,7 +135,7 @@ class Zombie(SpriteWithHealth):
         self.cur_texture1 += 1
         if self.cur_texture1 >= 4 * constants.UPDATES_PER_FRAME:
             self.cur_texture1 = 0
-        if self.change_x == 0 and self.change_y == 0:
+        if self.change_x == 0 and self.change_y == 0 and self.alive == True:
             frame = self.cur_texture1 // constants.UPDATES_PER_FRAME
             direction = self.character_face_direction
             self.texture = self.idle_textures[frame-1][direction]
@@ -152,15 +152,17 @@ class Zombie(SpriteWithHealth):
 
         #Dying animation
         if self.cur_health <= 0:
+            self.alive = False
+            self.velocity = [0,0]
             if self.cur_texture >= 4 * constants.UPDATES_PER_FRAME:
                 self.cur_texture = 0
             frame = self.cur_texture // constants.UPDATES_PER_FRAME
             direction = self.character_face_direction
             self.texture = self.death_textures[frame][direction]
             self.count += 1
-            if self.count == 25:
+            if self.count == 20:
             
-                self.kill()
+                self.remove_from_sprite_lists()
 
 
 
