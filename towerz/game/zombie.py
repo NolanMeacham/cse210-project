@@ -35,6 +35,27 @@ class Zombie(SpriteWithHealth):
         self.speed = constants.ZOMBIE_SPEED
         self.aggro = 0
 
+        self.character_face_direction = constants.RIGHT_FACING
+
+        # Used for flipping between image sequences
+        self.cur_texture = 0
+        self.cur_texture1 = 0
+
+        # Adjust the collision box. Default includes too much empty space
+        # side-to-side. Box is centered at sprite center, (0, 0)
+
+        self.points = [[-8, -20], [8, -20], [8, 20], [-8, 20]]
+
+        self.idle_textures = []
+        for i in range(4):
+            texture = self.load_texture_pair('towerz/images/skelly_idle.png', i*150, 0, 150, 150)
+            self.idle_textures.append(texture)
+        
+        # Load texures for running
+        self.run_textures = []
+        for i in range(4):
+            texture = self.load_texture_pair('towerz/images/skelly_walk.png', i*150, 0, 150, 150)
+            self.run_textures.append(texture)
 
     def attack_tower(self):
         """
@@ -95,3 +116,35 @@ class Zombie(SpriteWithHealth):
                     self.velocity = (0,0)
                     #TODO create strength attribute for each class. 
                     #TODO lower strength of zombie & stop zombie when collides with hero
+    def update_animation(self, delta_time: float = 1/60):
+
+        # Figure out if we need to flip face left or right
+        if self.change_x < 0 and self.character_face_direction == constants.RIGHT_FACING:
+            self.character_face_direction = constants.LEFT_FACING
+        elif self.change_x > 0 and self.character_face_direction == constants.LEFT_FACING:
+            self.character_face_direction = constants.RIGHT_FACING
+
+        # Idle animation
+        self.cur_texture1 += 1
+        if self.cur_texture1 >= 4 * constants.UPDATES_PER_FRAME:
+            self.cur_texture1 = 0
+        if self.change_x == 0 and self.change_y == 0:
+            frame = self.cur_texture1 // constants.UPDATES_PER_FRAME
+            direction = self.character_face_direction
+            self.texture = self.idle_textures[frame-1][direction]
+            return
+
+
+        if self.cur_texture >= 4 * constants.UPDATES_PER_FRAME:
+            self.cur_texture = 0
+        frame = self.cur_texture // constants.UPDATES_PER_FRAME
+        direction = self.character_face_direction
+        self.texture = self.run_textures[frame][direction]
+
+        self.cur_texture += 1
+
+    def load_texture_pair(self, filename, x_inc, y_inc, width, height):
+            """
+            Load a texture pair, with the second being a mirror image.
+            """
+            return [(arcade.load_texture(filename, x=x_inc, y=y_inc, width= width, height=height )), (arcade.load_texture(filename, x=x_inc, y=y_inc, width= width, height=height, flipped_horizontally=True))]
