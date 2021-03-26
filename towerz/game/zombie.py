@@ -33,6 +33,7 @@ class Zombie(SpriteWithHealth):
         self.cast = cast
         self.score_points = 10
         self.speed = constants.ZOMBIE_SPEED
+        self.aggro = 0
 
 
     def attack_tower(self):
@@ -43,12 +44,21 @@ class Zombie(SpriteWithHealth):
             self (Zombie): an instance of Zombie
 
         """
+        hero = self.cast['hero'][0]
+
         start_x = self.center_x
         start_y = self.center_y
 
         # Get the destination location for the bullet
-        dest_x = self.cast['tower'][0].center_x
-        dest_y = self.cast['tower'][0].center_y
+        if abs(hero.center_x - start_x) <= 100 and abs(hero.center_y - start_y) <= 100:
+
+
+                dest_x = hero.center_x
+                dest_y = hero.center_y
+
+        else:
+            dest_x = self.cast['tower'][0].center_x
+            dest_y = self.cast['tower'][0].center_y
 
         # Do math to calculate how to get the bullet to the destination.
         # Calculation the angle in radians between the start points
