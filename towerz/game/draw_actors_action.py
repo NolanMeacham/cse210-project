@@ -1,5 +1,6 @@
 from game.action import Action
 from game import constants
+import time
 
 import arcade
 
@@ -21,6 +22,7 @@ class DrawActorsAction(Action):
         """
         self._output_service = output_service
         self.background = arcade.load_texture(constants.BACKGROUND)
+        self._add_enemy = None
 
     def execute(self, cast):
         """Executes the action using the given actors.
@@ -36,6 +38,11 @@ class DrawActorsAction(Action):
         arcade.draw_lrwh_rectangle_textured(0, 0,
                                             constants.MAX_X, constants.MAX_Y,
                                             self.background)
+        wave = self._add_enemy.new_wave()
+        arcade.draw_text(wave, constants.MAX_X / 2, 700 ,
+                         arcade.color.WHITE, font_size=50, anchor_x="center")
+        
+        
         for key, actors in cast.items():
             for actor in actors:
                 actor.update_animation()

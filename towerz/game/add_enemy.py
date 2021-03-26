@@ -20,6 +20,12 @@ class Add_enemy(Action):
         self.speed_difficulty = constants.DIFFICULTY
         self.begin_spawn()
         self.timer = time.time()
+        self.count = 0
+        self.first_time = 1
+        self.wave_timer = 0
+        self.can_run = True
+        self.wave = 'Wave 1'
+        
         
 
 
@@ -40,8 +46,68 @@ class Add_enemy(Action):
         else:
             self.spawn_difficulty += constants.SPAWN_DIFFICULTY_MODIFIER
             self.speed_difficulty += constants.SPEED_DIFFICULTY_MODIFIER
+    def new_wave(self):
+        if self.count >= 0 and self.count <= 9:
+            return self.wave
+        
+        elif self.count >= 10 and self.count <= 19:
+            if self.first_time == 1:
+                self.wave_timer = time.time()
+                arcade.unschedule(self.create_zombie)
+                self.first_time = 0
+            if self.can_run == True:
+                
+                if time.time() - self.wave_timer >= 10:
+                    self.begin_spawn()
+                    self.can_run = False
+                    self.wave = "Wave 2"
+            return self.wave
+        elif self.count >= 20 and self.count <= 39:
+            if self.first_time == 0:
+                self.wave_timer = time.time()
+                arcade.unschedule(self.create_zombie)
+                self.first_time = 1
+                self.can_run = True
+            if self.can_run == True:
+                
+                if time.time() - self.wave_timer >= 15:
+                    self.begin_spawn()
+                    self.can_run = False
+                    self.wave = "Wave 3"
+            return self.wave
+        elif self.count >= 40 and self.count <= 65:
+            if self.first_time == 1:
+                self.wave_timer = time.time()
+                arcade.unschedule(self.create_zombie)
+                self.first_time = 0
+                self.can_run = True
+            if self.can_run == True:
+                
+                if time.time() - self.wave_timer >= 15:
+                    self.begin_spawn()
+                    self.can_run = False
+                    self.wave = "Wave 4"
+            return self.wave
+        elif self.count >= 65 and self.count <= 100:
+            if self.first_time == 0:
+                self.wave_timer = time.time()
+                arcade.unschedule(self.create_zombie)
+                self.first_time = 1
+                self.can_run = True
+            if self.can_run == True:
+                
+                if time.time() - self.wave_timer >= 20:
+                    self.begin_spawn()
+                    self.can_run = False
+                    self.wave = "Wave 5"
+            return self.wave
+        elif self.count >= 100:
+            return 'SURVIVAL'
 
 
+        
+
+    
 
 
     def create_zombie(self, delta_time: float):
@@ -67,21 +133,27 @@ class Add_enemy(Action):
             random_x =  random.randint(0 , constants.MAX_X)
             random_y = constants.MAX_Y - 20
 
-        #After 5 seconds, start spawning regular zombies every 3 seconds
+        #After 30 seconds, start spawning big zombies along with small zombies every 3 seconds
         if time.time() - self.timer >= 30 :
             if ran == 1:
                 big_zombie = BigZombie(random_x,random_y, self.cast)
                 big_zombie.speed *= self.speed_difficulty
                 self.cast['zombies'].append(big_zombie)
+                self.count += 1
             elif ran == 2 or ran == 3 or ran == 4:
                 zombie = Zombie(random_x, random_y, self.cast)
                 zombie.speed *= self.speed_difficulty
                 self.cast['zombies'].append(zombie)
+                self.count += 1 
 
         else:
             zombie = Zombie(random_x, random_y, self.cast)
             zombie.speed *= self.speed_difficulty
             self.cast['zombies'].append(zombie)
+            self.count += 1
+
+
+
 
     def begin_spawn(self):
         """
@@ -91,21 +163,10 @@ class Add_enemy(Action):
     def make_resource(self):
         """
         """
-        # ran = random.randint(1, 5)
+
         random_x = random.randint(20, constants.MAX_X - 20)
         random_y = random.randint(20, constants.MAX_Y - 20)
-        # if ran == 1:
-        #     random_x = constants.MAX_X - 20
-        #     random_y = random.randint(0 , constants.MAX_Y - 20)
-        # elif ran == 2:
-        #     random_x = 20
-        #     random_y = random.randint(0 , constants.MAX_Y - 20)
-        # elif ran == 3:
-        #     random_x = random.randint(0 , constants.MAX_X - 20)
-        #     random_y = 20
-        # elif ran == 4:
-        #     random_x =  random.randint(0 , constants.MAX_X - 20)
-        #     random_y = constants.MAX_Y + 20
+
 
         resource = Resource(random_x, random_y)
 
