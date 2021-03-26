@@ -1,5 +1,6 @@
 import arcade
 from game import constants
+from game.music_handler import MusicHandler
 
 class DeathView(arcade.View):
     """
@@ -18,6 +19,9 @@ class DeathView(arcade.View):
         super().__init__()
         self.start_view = start_screen
         self.tower = tower
+        self.music = MusicHandler()
+        self.music.add_song_list(constants.DEATH_SOUND)
+        self.music.play_song()
 
     def on_show(self):
         """
