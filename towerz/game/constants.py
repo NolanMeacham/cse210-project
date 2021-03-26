@@ -81,5 +81,10 @@ SPEED_DIFFICULTY_MODIFIER = .0001
 
 #music assets
 BACKGROUND_MUSIC = ['towerz/sounds/background.mp3']
+<<<<<<< HEAD
+DEATH_SOUND = ['towerz/sounds/death_theme.mp3']
+MUSIC_VOLUME = 5
+=======
 DEATH_SOUND = ['towerz\sounds\death_theme.mp3']
 MUSIC_VOLUME = 50
+>>>>>>> 8062016043270c18c7aa3936ba1e78c4806a31bf

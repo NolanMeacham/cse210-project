@@ -24,8 +24,9 @@ class TowerzView(arcade.View):
         self._input_service = input_service
         self.music = MusicHandler()
         self.music.add_song_list(constants.BACKGROUND_MUSIC)
-        self.music.play_song()
-        
+        self.music.play_song_looped()
+
+
     def on_show(self):
         """
 
@@ -68,8 +69,8 @@ class TowerzView(arcade.View):
         """
         # self._cast['hero'][0].update_animation()
         self._cue_action("update")
-        self._script["output"][0]._add_enemy = self._script["update"][3]
 
+        self._script["output"][0]._add_enemy = self._script["update"][3]
 
 
 
