@@ -38,15 +38,17 @@ class DrawActorsAction(Action):
         arcade.draw_lrwh_rectangle_textured(0, 0,
                                             constants.MAX_X, constants.MAX_Y,
                                             self.background)
-        wave = self._add_enemy.new_wave()
-        arcade.draw_text(wave, constants.MAX_X / 2, 700 ,
-                         arcade.color.WHITE, font_size=50, anchor_x="center")
+        
         
         
         for key, actors in cast.items():
             for actor in actors:
                 actor.update_animation()
                 self._output_service.draw_actor(actor)
+
+        wave = self._add_enemy.new_wave()
+        arcade.draw_text(wave, constants.MAX_X / 2, 700 ,
+                         arcade.color.WHITE, font_size=50, anchor_x="center")
         
         self._output_service.flush_buffer()
 

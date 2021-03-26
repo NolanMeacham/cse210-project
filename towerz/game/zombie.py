@@ -33,7 +33,8 @@ class Zombie(SpriteWithHealth):
         self.cast = cast
         self.score_points = 10
         self.speed = constants.ZOMBIE_SPEED
-        self.aggro = 0
+        self.count = 0
+        
 
         self.character_face_direction = constants.RIGHT_FACING
 
@@ -44,7 +45,7 @@ class Zombie(SpriteWithHealth):
         # Adjust the collision box. Default includes too much empty space
         # side-to-side. Box is centered at sprite center, (0, 0)
 
-        self.points = [[-8, -20], [8, -20], [8, 20], [-8, 20]]
+        self.points = [[-20, -20], [20, -20], [20, 20], [-20, 20]]
 
         self.idle_textures = []
         for i in range(4):
@@ -56,6 +57,12 @@ class Zombie(SpriteWithHealth):
         for i in range(4):
             texture = self.load_texture_pair('towerz/images/skelly_walk.png', i*150, 0, 150, 150)
             self.run_textures.append(texture)
+
+        self.death_textures = []
+        for i in range(4):
+            texture = self.load_texture_pair('towerz/images/skelly_death.png', i*150, 0, 150, 150)
+            self.death_textures.append(texture)
+
 
     def attack_tower(self):
         """
@@ -134,7 +141,7 @@ class Zombie(SpriteWithHealth):
             self.texture = self.idle_textures[frame-1][direction]
             return
 
-
+        #Walking animation
         if self.cur_texture >= 4 * constants.UPDATES_PER_FRAME:
             self.cur_texture = 0
         frame = self.cur_texture // constants.UPDATES_PER_FRAME
@@ -142,6 +149,20 @@ class Zombie(SpriteWithHealth):
         self.texture = self.run_textures[frame][direction]
 
         self.cur_texture += 1
+
+        #Dying animation
+        if self.cur_health <= 0:
+            if self.cur_texture >= 4 * constants.UPDATES_PER_FRAME:
+                self.cur_texture = 0
+            frame = self.cur_texture // constants.UPDATES_PER_FRAME
+            direction = self.character_face_direction
+            self.texture = self.death_textures[frame][direction]
+            self.count += 1
+            if self.count == 25:
+            
+                self.kill()
+
+
 
     def load_texture_pair(self, filename, x_inc, y_inc, width, height):
             """
