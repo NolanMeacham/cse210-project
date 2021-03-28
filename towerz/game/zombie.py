@@ -34,6 +34,7 @@ class Zombie(SpriteWithHealth):
         self.score_points = constants.ZOMBIE_POINTS
         self.speed = constants.ZOMBIE_SPEED
         self.count = 0
+        self.cur_texture2 = 0
         
 
         self.character_face_direction = constants.RIGHT_FACING
@@ -154,17 +155,16 @@ class Zombie(SpriteWithHealth):
         if self.cur_health <= 0:
             self.alive = False
             self.velocity = [0,0]
-            if self.cur_texture >= 4 * constants.UPDATES_PER_FRAME:
-                self.cur_texture = 0
-            frame = self.cur_texture // constants.UPDATES_PER_FRAME
+            if self.cur_texture2 >= 4 * constants.UPDATES_PER_FRAME:
+                self.cur_texture2 = 0
+            frame = self.cur_texture2 // constants.UPDATES_PER_FRAME
             direction = self.character_face_direction
             self.texture = self.death_textures[frame][direction]
-            self.count += 1
-            if self.count == 15:
-            
-                self.remove_from_sprite_lists()
+            if frame == 3:
+                self.texture = self.death_textures[3][direction]
+                self.kill()
 
-
+        self.cur_texture2 += 1
 
     def load_texture_pair(self, filename, x_inc, y_inc, width, height):
             """

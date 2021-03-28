@@ -45,8 +45,8 @@ class ControlActorsAction(Action):
 
         y_dif = self._input_service.mouse_y - hero.center_y
 
-        per_x = x_dif * 0.1
-        per_y = y_dif * 0.1
+        per_x = x_dif * 0.2
+        per_y = y_dif * 0.2
 
         x = hero.center_x + per_x
         y = hero.center_y + per_y
