@@ -47,6 +47,7 @@ class Add_enemy(Action):
             self.spawn_difficulty += constants.SPAWN_DIFFICULTY_MODIFIER
             self.speed_difficulty += constants.SPEED_DIFFICULTY_MODIFIER
     def new_wave(self):
+        # This super clunky function is what determines which wave is happening
         if self.count >= 0 and self.count <= 9:
             return self.wave
         
@@ -99,15 +100,27 @@ class Add_enemy(Action):
                 self.can_run = True
             if self.can_run == True:
                 if len(self.cast['zombies']) == 0:
-                    if time.time() - self.wave_timer >= 20:
+                    if time.time() - self.wave_timer >= 15:
                     
                         self.begin_spawn()
                         self.can_run = False
                         self.wave = "Wave 5"
             return self.wave
         elif self.count >= 100:
-            if len(self.cast['zombies']) == 0:
-                return 'SURVIVAL'
+            if self.first_time == 1:
+                self.wave_timer = time.time()
+                arcade.unschedule(self.create_zombie)
+                self.first_time = 0
+                self.can_run = True
+            if self.can_run == True:
+        
+                if len(self.cast['zombies']) == 0:
+                    if time.time() - self.wave_timer >= 15:
+                        self.begin_spawn()
+                        self.can_run = False
+                        self.wave = "Survival"
+
+            return self.wave
 
 
         

@@ -20,7 +20,7 @@ class MusicHandler():
         """ Play the song. """
         # Stop what is currently playing.
         if self.music:
-            self.music.stop()
+            self.music.stop(self.current_player)
         # Play the next song
         self.music = arcade.Sound(self.music_list[self.current_song_index], streaming=True)
         self.current_player = self.music.play(constants.MUSIC_VOLUME)
@@ -28,15 +28,16 @@ class MusicHandler():
         # and on_update will think the music is over and advance us to the next
         # song before starting this one.
         time.sleep(0.03)
-
+        
     def play_song_looped(self):
         """ Play the song. """
         # Stop what is currently playing.
-        if self.music:
-            self.music.stop()
+        # if self.music:
+        #     self.music.stop(self.current_player)
         # Play the next song
         self.music = arcade.Sound(self.music_list[self.current_song_index], streaming=True)
         self.current_player = self.music.play(constants.MUSIC_VOLUME, loop = True)
+        
         # This is a quick delay. If we don't do this, our elapsed time is 0.0
         # and on_update will think the music is over and advance us to the next
         # song before starting this one.
@@ -47,3 +48,5 @@ class MusicHandler():
 
     def clear_queue(self):
         self.music_list = []
+
+    

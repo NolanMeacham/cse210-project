@@ -37,7 +37,7 @@ HERO_HEALTH_Y = 50
 # Tower
 # TOWER_IMAGE = "towerz/images/gray_castle.png"
 TOWER_IMAGE = "towerz/images/gray_rectangle.png"
-TOWER_SCALE = 0.8
+TOWER_SCALE = 4
 TOWER_X = MAX_X / 2
 TOWER_Y = MAX_Y / 2
 TOWER_HEALTH = 500
@@ -71,7 +71,7 @@ WALL_MAGIC_SCALING = .1
 
 #Resource
 RESOURCE_IMAGE = "towerz/images/crystal2.png"
-RESOURCE_SCALING = 0.1
+RESOURCE_SCALING = 0.5
 
 RESOURCE_COUNTER_WIDTH = 250
 
@@ -81,10 +81,5 @@ SPEED_DIFFICULTY_MODIFIER = .0001
 
 #music assets
 BACKGROUND_MUSIC = ['towerz/sounds/background.mp3']
-<<<<<<< HEAD
-DEATH_SOUND = ['towerz/sounds/death_theme.mp3']
-MUSIC_VOLUME = 5
-=======
 DEATH_SOUND = ['towerz\sounds\death_theme.mp3']
 MUSIC_VOLUME = 50
->>>>>>> 8062016043270c18c7aa3936ba1e78c4806a31bf

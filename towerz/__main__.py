@@ -47,9 +47,6 @@ def main():
     # add the bullets
     cast["bullets"] = []
 
-    # add the resources
-    cast['resources'] = arcade.SpriteList()
-
     # add the hero
     hero = Hero(cast)
     cast["hero"] = [hero]
@@ -67,6 +64,9 @@ def main():
 
     # add the magic
     cast['magicks'] = []
+
+    # add the resources
+    cast['resources'] = arcade.SpriteList()
 
 
     # create the script {key: tag, value: list}

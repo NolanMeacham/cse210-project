@@ -2,6 +2,7 @@ import arcade
 from game.towerz import TowerzView
 from game.add_enemy import Add_enemy
 from game.instruction_view import InstructionView
+from game.music_handler import MusicHandler
 from game import constants
 
 class StartView(arcade.View):
@@ -22,6 +23,8 @@ class StartView(arcade.View):
         self.script = script
         self.input_service = input_service
         self.background = arcade.load_texture('towerz/images/start_screen.PNG')
+        self.music = MusicHandler()
+
 
     def on_show(self):
         """
@@ -44,9 +47,10 @@ class StartView(arcade.View):
                                             constants.MAX_X, constants.MAX_Y,
                                             self.background)
         arcade.draw_text("Towerz", 150, 700,
-                         arcade.color.WHITE, font_size=50, anchor_x="center")
+                         arcade.color.WHITE, font_size=50, anchor_x="center",font_name="Times New Roman")
         arcade.draw_text("Click Anywhere To Play", 1000, 100,
                          arcade.color.WHITE, font_size=20, anchor_x="center")
+
         arcade.draw_text("Press any key for instructions", 1000, 50, 
                          arcade.color.WHITE, font_size=20, anchor_x="center")
             
@@ -62,7 +66,7 @@ class StartView(arcade.View):
             modifiers ():
         """
         self.script['update'].append(Add_enemy())
-        game_view = TowerzView(self.cast, self.script, self.input_service)
+        game_view = TowerzView(self.cast, self.script, self.input_service, self.music)
         game_view.setup()
         self.window.show_view(game_view)
     

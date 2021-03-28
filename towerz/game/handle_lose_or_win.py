@@ -28,15 +28,13 @@ class HandleLoseOrWinAction(Action):
         turrets = cast['turrets']
 
         if tower.get_current_health() <= 0:
-            for zombie in zombies:
-                zombie.remove_from_sprite_lists()
-            for turret in turrets:
-                turret.remove_from_sprite_lists()
+        
             
 
 
             death_screen = DeathView(self.start, tower)
             self.window.show_view(death_screen)
+            tower.cur_health = constants.TOWER_HEALTH
             
 
 

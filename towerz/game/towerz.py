@@ -6,7 +6,7 @@ from game import constants
 class TowerzView(arcade.View):
     """
     """
-    def __init__(self, cast, script, input_service):
+    def __init__(self, cast, script, input_service, music_handler):
         """
         Class constructor. Initializes the game.
 
@@ -22,10 +22,11 @@ class TowerzView(arcade.View):
         self._cast = cast
         self._script = script
         self._input_service = input_service
-        self.music = MusicHandler()
+        self.music = music_handler
+        self.music.music_list = []
         self.music.add_song_list(constants.BACKGROUND_MUSIC)
         self.music.play_song_looped()
-
+        self._input_service._keys = []
 
     def on_show(self):
         """

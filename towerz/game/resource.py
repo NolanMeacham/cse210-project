@@ -20,12 +20,13 @@ class Resource(SpriteWithHealth):
             x (int): value representing the x position
             y (int): value representing the y position
         """
-        super().__init__(constants.RESOURCE_IMAGE, 0.1, 100 )
+        super().__init__(constants.RESOURCE_IMAGE, constants.RESOURCE_SCALING, 100 )
         self.center_x = x
         self.center_y = y
         self.alive = True
         self.health_color = arcade.color.PURPLE
-
+        self.texture = arcade.load_texture('towerz/images/tree_resource.png')
+        self.points = [[-60, -100], [60, -100], [60, 100], [-60, 100]]
     def get_smaller(self):
         """
         Changes the image scale, causes the image to display smaller.

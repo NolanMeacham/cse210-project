@@ -160,7 +160,7 @@ class Zombie(SpriteWithHealth):
             direction = self.character_face_direction
             self.texture = self.death_textures[frame][direction]
             self.count += 1
-            if self.count == 20:
+            if self.count == 15:
             
                 self.remove_from_sprite_lists()
 

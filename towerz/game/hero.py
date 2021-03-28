@@ -51,14 +51,18 @@ class Hero(SpriteWithHealth):
 
         # Load textures for idle standing
         self.idle_textures = []
-        for i in range(3):
-            texture = self.load_texture_pair(f'{main_path}-idle-2-0{i+1}.png')
+        for i in range(15):
+            texture = self.load_texture_pair('towerz/images/Knightidle_strip.png', i*64, 0, 64, 64)
             self.idle_textures.append(texture)
         
         # Load texures for running
+        # self.run_textures = []
+        # for i in range(5):
+        #     texture = self.load_texture_pair(f'{main_path}-run-0{i+1}.png')
+        #     self.run_textures.append(texture)
         self.run_textures = []
-        for i in range(5):
-            texture = self.load_texture_pair(f'{main_path}-run-0{i+1}.png')
+        for i in range(8):
+            texture = self.load_texture_pair('towerz/images/Knightrun_strip.png', i*64, 0, 64, 64)
             self.run_textures.append(texture)
         
 
@@ -141,16 +145,17 @@ class Hero(SpriteWithHealth):
             self.character_face_direction = constants.RIGHT_FACING
 
         # Idle animation
+        
         self.cur_texture1 += 1
-        if self.cur_texture1 >= 4 * constants.UPDATES_PER_FRAME:
+        if self.cur_texture1 >= 15 * constants.UPDATES_PER_FRAME:
             self.cur_texture1 = 0
-        if self.change_x == 0 and self.change_y == 0:
+        if self.change_x == 0 and self.change_y == 0 and self.alive == True:
             frame = self.cur_texture1 // constants.UPDATES_PER_FRAME
             direction = self.character_face_direction
             self.texture = self.idle_textures[frame-1][direction]
             return
 
-
+        #Walking animation
         if self.cur_texture >= 5 * constants.UPDATES_PER_FRAME:
             self.cur_texture = 0
         frame = self.cur_texture // constants.UPDATES_PER_FRAME
@@ -159,7 +164,15 @@ class Hero(SpriteWithHealth):
 
         self.cur_texture += 1
 
+        
 
-        # Walking animation
+
+        
+
+    def load_texture_pair(self, filename, x_inc, y_inc, width, height):
+            """
+            Load a texture pair, with the second being a mirror image.
+            """
+            return [(arcade.load_texture(filename, x=x_inc, y=y_inc, width= width, height=height )), (arcade.load_texture(filename, x=x_inc, y=y_inc, width= width, height=height, flipped_horizontally=True))]
         
         

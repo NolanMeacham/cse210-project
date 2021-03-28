@@ -23,6 +23,8 @@ class TowerSprite(SpriteWithHealth):
         self.center_y = constants.TOWER_Y
         self.change_x = 0
         self.change_y = 0
+        self.texture = arcade.load_texture("towerz/images/castle_tile.png", 80, 0, 40, 40)
+        self.points = [[-15, -13], [15, -13], [15, 13], [-15, 13]]
 
     def draw_health_bar(self):
         """ 

@@ -19,12 +19,10 @@ class DeathView(arcade.View):
         super().__init__()
         self.start_view = start_screen
         self.tower = tower
-        self.music = MusicHandler()
-        self.music.stop_music()
+        self.music = start_screen.music
         self.music.clear_queue()
         self.music.add_song_list(constants.DEATH_SOUND)
         self.music.play_song()
-
     def on_show(self):
         """
         """
