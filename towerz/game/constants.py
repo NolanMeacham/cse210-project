@@ -47,8 +47,8 @@ TOWER_HEALTH_X = 1000
 TOWER_HEALTH_Y = 50
 
 # Turret
-TURRET_IMAGE = "towerz/images/brown_rect.png"
-TURRET_SCALE = 0.2
+TURRET_IMAGE = "towerz/images/cannon.png"
+TURRET_SCALE = 0.15
 TURRET_X = MAX_X / 2
 TURRET_Y = MAX_Y / 2 + 10
 TURRET_HEALTH =  20
@@ -85,3 +85,5 @@ SPEED_DIFFICULTY_MODIFIER = .0001
 BACKGROUND_MUSIC = ['towerz/sounds/background.mp3']
 DEATH_SOUND = ['towerz/sounds/death_theme.mp3']
 MUSIC_VOLUME = 50
+
+CROSS_HAIR = 'towerz/images/cross_hair.png'

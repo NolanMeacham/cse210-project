@@ -33,6 +33,7 @@ class Turret(SpriteWithHealth):
         self.change_y = 0
         self.timer = time.time()
         self.cast = cast
+        self.turret_angle = 0
 
     
     def on_update(self):
@@ -48,6 +49,7 @@ class Turret(SpriteWithHealth):
             self.attack_enemy()
             self.timer = time.time()
             self.cur_health -= 1
+        
 
     
     def attack_enemy(self):
@@ -68,8 +70,8 @@ class Turret(SpriteWithHealth):
             closest_enemy = arcade.sprite_list.get_closest_sprite(self, zombies)[0]
 
             # start the bullet at the turret's location
-            start_x = self.center_x
-            start_y = self.center_y
+            start_x = self.center_x 
+            start_y = self.center_y 
 
             # destination is the closest enemy
             dest_x = closest_enemy.center_x
@@ -84,9 +86,13 @@ class Turret(SpriteWithHealth):
             # print(f'closest enemy is at ({dest_x}, {dest_y}) at angle: {angle * 180/pi:.0f}')
             bullet_change_x = cos(angle) * constants.BULLET_SPEED
             bullet_change_y = sin(angle) * constants.BULLET_SPEED
+            self.turret_angle = angle
+
 
             new_bullet = TurretBullet(start_x, start_y, bullet_change_x, bullet_change_y, self.cast)
             self.cast["bullets"].append(new_bullet)
 
             arcade.play_sound(new_bullet.bullet_sound)
-
+    def update_animation(self):
+        self.angle = self.turret_angle * 180/3.14
+        

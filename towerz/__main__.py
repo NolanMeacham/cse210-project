@@ -41,11 +41,11 @@ def main():
     # add the wall
     cast["walls"] = arcade.SpriteList()
 
-    # add the turret
-    cast["turrets"] = arcade.SpriteList()
-
     # add the bullets
     cast["bullets"] = []
+
+    # add the turret
+    cast["turrets"] = arcade.SpriteList()
 
     # add the hero
     hero = Hero(cast)

@@ -38,6 +38,7 @@ class Hero(SpriteWithHealth):
         # Used for flipping between image sequences
         self.cur_texture = 0
         self.cur_texture1 = 0
+        self.cur_texture2 = 0
 
         # Adjust the collision box. Default includes too much empty space
         # side-to-side. Box is centered at sprite center, (0, 0)
@@ -62,9 +63,14 @@ class Hero(SpriteWithHealth):
         #     self.run_textures.append(texture)
         self.run_textures = []
         for i in range(8):
-            texture = self.load_texture_pair('towerz/images/Knightrun_strip.png', i*64, 0, 64, 64)
+            texture = self.load_texture_pair('towerz/images/Knightrun_strip.png', i*96, 0, 96, 64)
             self.run_textures.append(texture)
         
+        self.attack_textures = []
+        for i in range(8):
+            texture = self.load_texture_pair('towerz/images/KnightAttack_strip.png', i*96, 0 , 96, 64)
+            self.attack_textures.append(texture)
+        self.swing = False
 
 
 
@@ -144,12 +150,29 @@ class Hero(SpriteWithHealth):
         elif self.change_x > 0 and self.character_face_direction == constants.LEFT_FACING:
             self.character_face_direction = constants.RIGHT_FACING
 
+        # Attack animation
+        if self.swing == True:
+            if self.cur_texture2 >= 8 * constants.UPDATES_PER_FRAME:
+                    self.cur_texture2 = 0
+            frame = self.cur_texture2 // constants.UPDATES_PER_FRAME
+            direction = self.character_face_direction
+            self.texture = self.attack_textures[frame][direction]
+            self.cur_texture2 += 1
+            if frame >= 7:
+                self.swing = False
+            return
+        
+            
+            
+
+        
+
         # Idle animation
         
         self.cur_texture1 += 1
         if self.cur_texture1 >= 15 * constants.UPDATES_PER_FRAME:
             self.cur_texture1 = 0
-        if self.change_x == 0 and self.change_y == 0 and self.alive == True:
+        if self.change_x == 0 and self.change_y == 0 and self.alive == True and self.swing == False:
             frame = self.cur_texture1 // constants.UPDATES_PER_FRAME
             direction = self.character_face_direction
             self.texture = self.idle_textures[frame-1][direction]
@@ -158,12 +181,14 @@ class Hero(SpriteWithHealth):
         #Walking animation
         if self.cur_texture >= 5 * constants.UPDATES_PER_FRAME:
             self.cur_texture = 0
-        frame = self.cur_texture // constants.UPDATES_PER_FRAME
-        direction = self.character_face_direction
-        self.texture = self.run_textures[frame][direction]
+        if self.swing == False:
+            frame = self.cur_texture // constants.UPDATES_PER_FRAME
+            direction = self.character_face_direction
+            self.texture = self.run_textures[frame][direction]
 
         self.cur_texture += 1
 
+       
         
 
 
@@ -174,5 +199,6 @@ class Hero(SpriteWithHealth):
             Load a texture pair, with the second being a mirror image.
             """
             return [(arcade.load_texture(filename, x=x_inc, y=y_inc, width= width, height=height )), (arcade.load_texture(filename, x=x_inc, y=y_inc, width= width, height=height, flipped_horizontally=True))]
+        
         
         

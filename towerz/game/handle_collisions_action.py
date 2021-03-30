@@ -58,7 +58,7 @@ class HandleCollisionsAction(Action):
         for zomb in zombies:
             if zomb.collides_with_sprite(tower):
                 zomb.velocity = [0,0]
-                tower.cur_health -= 5
+                tower.cur_health -= 1
             if zomb.get_current_health() <= 0:
                 zomb.update_animation()
                 

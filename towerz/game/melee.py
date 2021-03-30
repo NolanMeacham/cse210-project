@@ -15,10 +15,11 @@ class Melee(arcade.Sprite):
             cast (dict): dictionary that holds all the actors
 
         """
-        super().__init__(constants.HERO_IMAGE, 1,image_height=10, image_width=15)
+        super().__init__(constants.CROSS_HAIR, 0.25)
         self.offset = 0
         self.cast = cast
         self.timer = time.time()
+        self.swing = False
 
 
     def attack(self):
@@ -29,7 +30,7 @@ class Melee(arcade.Sprite):
             self (Melee): an instance of Melee
 
         """
-        if time.time() - self.timer >= 0.25:
+        if time.time() - self.timer >= 0.5:
             self.timer = time.time()
             for zombie in self.cast['zombies']:
                 if self.collides_with_sprite(zombie):
@@ -44,8 +45,15 @@ class Melee(arcade.Sprite):
                     if self.cast["resource_counter"][0].cur_health < 100:
 
                         self.cast["resource_counter"][0].cur_health += 10
-        else:
-            pass
+            self.cast['hero'][0].swing = True
+            self.cast['hero'][0].update_animation()
+            
+            
+        
+    
+
+
+
 
 
     def shealth_melee(self):
