@@ -1,6 +1,8 @@
 
 HERO_MOVE_SCALE = 4
 HERO_IMAGE = "towerz/images/blue_rectangle.png"
+HERO_SLASH_SOUND = "towerz/sounds/sword_slash.m4a"
+HERO_HIT_SOUND = "towerz/sounds/hero_gets_hit.m4a"
 ZOMBIE_IMAGE = "towerz/images/red_rectangle.png"
 WALL_IMAGE = "towerz/images/wall_h.png"
 BACKGROUND = "towerz/images/background.png"
@@ -53,7 +55,7 @@ TURRET_HEALTH =  20
 
 # Bullet
 BULLET_IMAGE = "towerz/images/small_gray_rect.png"
-BULLET_SOUND = "towerz/sounds/turret_fire.wav"
+BULLET_SOUND = "towerz/sounds/turret_updated.m4a"
 BULLET_SCALE = 0.08
 BULLET_SPEED = 7
 
@@ -79,5 +81,5 @@ SPEED_DIFFICULTY_MODIFIER = .0001
 
 #music assets
 BACKGROUND_MUSIC = ['towerz/sounds/background.mp3']
-DEATH_SOUND = ['towerz\sounds\death_theme.mp3']
+DEATH_SOUND = ['towerz/sounds/death_theme.mp3']
 MUSIC_VOLUME = 50
