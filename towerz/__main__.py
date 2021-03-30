@@ -84,7 +84,7 @@ def main():
     window = arcade.Window(constants.MAX_X, constants.MAX_Y, "Towerz") 
     start_screen = StartView(cast, script, input_service)   
 
-    handle_lose_or_win = HandleLoseOrWinAction(window, start_screen)
+    handle_lose_or_win = HandleLoseOrWinAction(window, start_screen, script)
 
     script["input"] = [control_actors_action]
     script["update"] = [move_actors_action, handle_collisions_action, handle_lose_or_win]

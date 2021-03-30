@@ -4,10 +4,11 @@ from game.action import Action
 from game.death_screen import  DeathView
 from game.towerz import TowerzView
 from game.add_enemy import Add_enemy
+from game.win_screen import WinView
 
 class HandleLoseOrWinAction(Action):
 
-    def __init__(self, window, start_screen):
+    def __init__(self, window, start_screen, script):
         """
         Class constructor
 
@@ -18,6 +19,7 @@ class HandleLoseOrWinAction(Action):
         """
         self.window = window
         self.start = start_screen
+        self.script = script
 
     
     def execute(self, cast):
@@ -30,11 +32,17 @@ class HandleLoseOrWinAction(Action):
         if tower.get_current_health() <= 0:
         
             
+            if self.script['update'][3].wave == 'Survival':
+                win_screen = WinView(self.start, tower)
+                self.window.show_view(win_screen)
+                tower.cur_health = constants.TOWER_HEALTH
 
+            else:
+                death_screen = DeathView(self.start, tower)
+                self.window.show_view(death_screen)
+                tower.cur_health = constants.TOWER_HEALTH
 
-            death_screen = DeathView(self.start, tower)
-            self.window.show_view(death_screen)
-            tower.cur_health = constants.TOWER_HEALTH
+        
             
 
 

@@ -56,13 +56,13 @@ class HandleCollisionsAction(Action):
         
 
         for zomb in zombies:
-            if zomb.collides_with_sprite(tower):
-                zomb.velocity = [0,0]
-                tower.cur_health -= 1
             if zomb.get_current_health() <= 0:
                 zomb.update_animation()
                 
                 score.add_points(zomb.score_points)
+            if zomb.collides_with_sprite(tower):
+                zomb.velocity = [0,0]
+                tower.cur_health -= 1
                 
 
         # update each turret.
@@ -76,7 +76,10 @@ class HandleCollisionsAction(Action):
             zombies_hit = bullet.collides_with_list(zombies)
             for zombie in zombies_hit:
                 zombie.cur_health -= 50
-                bullets.remove(bullet)
+                if bullet in bullets == True:
+
+                    bullets.remove(bullet)
+
 
             # This removes the bullets that are off screen
             if bullet.center_x < 0 or bullet.center_y < 0:

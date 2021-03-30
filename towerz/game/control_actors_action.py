@@ -67,7 +67,7 @@ class ControlActorsAction(Action):
         # if the user is trying to build a turret, 
         # check that there aren't already 2 turrets first.
         # If not, then check for enough resources and build a turret
-        if self._input_service.is_building_turret() and len(turrets) < 2:
+        if self._input_service.is_building_turret() and len(turrets) < 4:
             if resource_counter.cur_health >= 50:
                 hero.build_turret()
                 resource_counter.cur_health -= 50

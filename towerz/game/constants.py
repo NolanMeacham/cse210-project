@@ -87,3 +87,4 @@ DEATH_SOUND = ['towerz/sounds/death_theme.mp3']
 MUSIC_VOLUME = 50
 
 CROSS_HAIR = 'towerz/images/cross_hair.png'
+WIN_SOUND = ['towerz/sounds/yes.mp3']
