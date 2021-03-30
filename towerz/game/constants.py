@@ -8,7 +8,7 @@ WALL_IMAGE = "towerz/images/wall_h.png"
 BACKGROUND = "towerz/images/background.png"
 HERO_Y = 100
 
-UPDATES_PER_FRAME = 14
+UPDATES_PER_FRAME = 8
 
 RIGHT_FACING = 0
 LEFT_FACING = 1

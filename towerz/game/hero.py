@@ -67,10 +67,7 @@ class Hero(SpriteWithHealth):
             self.run_textures.append(texture)
         
         self.attack_textures = []
-        for i in range(8):
-            texture = self.load_texture_pair('towerz/images/KnightAttack_strip.png', i*96, 0 , 96, 64)
-            self.attack_textures.append(texture)
-        self.swing = False
+    
 
 
 
@@ -151,16 +148,7 @@ class Hero(SpriteWithHealth):
             self.character_face_direction = constants.RIGHT_FACING
 
         # Attack animation
-        if self.swing == True:
-            if self.cur_texture2 >= 8 * constants.UPDATES_PER_FRAME:
-                    self.cur_texture2 = 0
-            frame = self.cur_texture2 // constants.UPDATES_PER_FRAME
-            direction = self.character_face_direction
-            self.texture = self.attack_textures[frame][direction]
-            self.cur_texture2 += 1
-            if frame >= 7:
-                self.swing = False
-            return
+        
         
             
             
@@ -170,23 +158,22 @@ class Hero(SpriteWithHealth):
         # Idle animation
         
         self.cur_texture1 += 1
-        if self.cur_texture1 >= 15 * constants.UPDATES_PER_FRAME:
+        if self.cur_texture1 >= 10 * constants.UPDATES_PER_FRAME:
             self.cur_texture1 = 0
-        if self.change_x == 0 and self.change_y == 0 and self.alive == True and self.swing == False:
+        if self.change_x == 0 and self.change_y == 0 and self.alive == True :
             frame = self.cur_texture1 // constants.UPDATES_PER_FRAME
             direction = self.character_face_direction
             self.texture = self.idle_textures[frame-1][direction]
             return
 
         #Walking animation
-        if self.cur_texture >= 5 * constants.UPDATES_PER_FRAME:
-            self.cur_texture = 0
-        if self.swing == False:
-            frame = self.cur_texture // constants.UPDATES_PER_FRAME
-            direction = self.character_face_direction
-            self.texture = self.run_textures[frame][direction]
-
         self.cur_texture += 1
+        if self.cur_texture >= 8 * constants.UPDATES_PER_FRAME:
+            self.cur_texture = 0
+        frame = self.cur_texture // constants.UPDATES_PER_FRAME
+        direction = self.character_face_direction
+        self.texture = self.run_textures[frame][direction]
+
 
        
         

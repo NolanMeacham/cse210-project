@@ -45,8 +45,8 @@ class Melee(arcade.Sprite):
                     if self.cast["resource_counter"][0].cur_health < 100:
 
                         self.cast["resource_counter"][0].cur_health += 10
-            self.cast['hero'][0].swing = True
-            self.cast['hero'][0].update_animation()
+        
+            
             
             
         
