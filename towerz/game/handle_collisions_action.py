@@ -76,13 +76,12 @@ class HandleCollisionsAction(Action):
             zombies_hit = bullet.collides_with_list(zombies)
             for zombie in zombies_hit:
                 zombie.cur_health -= 50
-                if bullet in bullets == True:
-
+                if bullet in bullets:
                     bullets.remove(bullet)
 
 
-            # This removes the bullets that are off screen
-            if bullet.center_x < 0 or bullet.center_y < 0:
-                bullets.remove(bullet)
-            if bullet.center_x > constants.MAX_X or bullet.center_y > constants.MAX_Y:
-                bullets.remove(bullet)
+                # This removes the bullets that are off screen
+                    if bullet.center_x < 0 or bullet.center_y < 0:
+                        bullets.remove(bullet)
+                    if bullet.center_x > constants.MAX_X or bullet.center_y > constants.MAX_Y:
+                        bullets.remove(bullet)
