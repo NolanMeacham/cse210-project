@@ -74,5 +74,6 @@ class ControlActorsAction(Action):
 
         
         if self._input_service.cast_magic():
-            for wall in walls:
-                wall.cast_magic()   
+            if len(walls) > 3:
+                for wall in walls:
+                    wall.cast_magic()   
