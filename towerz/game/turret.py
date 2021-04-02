@@ -91,6 +91,7 @@ class Turret(SpriteWithHealth):
 
             new_bullet = TurretBullet(start_x, start_y, bullet_change_x, bullet_change_y, self.cast)
             self.cast["bullets"].append(new_bullet)
+            print(self.cast['bullets'])
 
             arcade.play_sound(new_bullet.bullet_sound)
     def update_animation(self):

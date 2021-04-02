@@ -63,7 +63,7 @@ class Hero(SpriteWithHealth):
         #     self.run_textures.append(texture)
         self.run_textures = []
         for i in range(8):
-            texture = self.load_texture_pair('towerz/images/Knightrun_strip.png', i*96, 0, 96, 64)
+            texture = self.load_texture_pair('towerz/images/Knightrun_strip.png', i*64, 0, 64, 64)
             self.run_textures.append(texture)
         
         self.attack_textures = []
