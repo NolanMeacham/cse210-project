@@ -48,6 +48,7 @@ class Hero(SpriteWithHealth):
         # --- Load Textures ---
 
         main_path = "towerz/images/adventurer"
+        self.attacking = False
  
 
         # Load textures for idle standing
@@ -63,11 +64,14 @@ class Hero(SpriteWithHealth):
         #     self.run_textures.append(texture)
         self.run_textures = []
         for i in range(8):
-            texture = self.load_texture_pair('towerz/images/Knightrun_strip.png', i*64, 0, 64, 64)
+            texture = self.load_texture_pair('towerz/images/Knightrun_strip.png', i*96, 0, 96, 64)
             self.run_textures.append(texture)
         
         self.attack_textures = []
-    
+        for i in range(7):
+            texture = self.load_texture_pair('towerz/images/KnightAttack_strip.png', 1008 + i*144, 0, 144, 64)
+            self.attack_textures.append(texture)
+        
 
 
 
@@ -149,7 +153,16 @@ class Hero(SpriteWithHealth):
 
         # Attack animation
         
-        
+        self.cur_texture2 += 1
+        if self.cur_texture2 >= 7 * constants.UPDATES_PER_FRAME:
+            self.cur_texture2 = 0
+        if self.attacking:
+            frame = self.cur_texture2 // constants.UPDATES_PER_FRAME
+            direction = self.character_face_direction
+            self.texture = self.attack_textures[frame][direction]
+            if frame >= 6:
+                self.attacking = False
+            return
             
             
 
@@ -173,6 +186,8 @@ class Hero(SpriteWithHealth):
         frame = self.cur_texture // constants.UPDATES_PER_FRAME
         direction = self.character_face_direction
         self.texture = self.run_textures[frame][direction]
+
+        
 
 
        

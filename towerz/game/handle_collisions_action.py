@@ -38,9 +38,12 @@ class HandleCollisionsAction(Action):
         
         for zombie in zombies:
             zombie.attack_tower()
-        
-        if hero.collides_with_list(zombies):
-            hero.get_hit()
+
+        for zombie in zombies:
+            if hero.collides_with_sprite(zombie):
+                hero.get_hit()
+                zombie.velocity = [0,0]
+
 
         for wall in walls:
             for zombie in zombies:

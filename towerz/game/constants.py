@@ -87,7 +87,7 @@ SPEED_DIFFICULTY_MODIFIER = .0001
 #music assets
 BACKGROUND_MUSIC = ['towerz/sounds/background.mp3']
 DEATH_SOUND = ['towerz/sounds/death_theme.mp3']
-MUSIC_VOLUME = 50
+MUSIC_VOLUME = 0.18
 
 CROSS_HAIR = 'towerz/images/cross_hair.png'
 WIN_SOUND = ['towerz/sounds/yes.mp3']
