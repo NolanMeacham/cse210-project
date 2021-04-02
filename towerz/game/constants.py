@@ -7,6 +7,7 @@ HERO_RESOURCE_SOUND = "towerz/sounds/hit_resource_sound.m4a"
 ZOMBIE_IMAGE = "towerz/images/red_rectangle.png"
 WALL_IMAGE = "towerz/images/wall_h.png"
 BACKGROUND = "towerz/images/background.png"
+INSTRUCTION_IMAGE = "towerz/images/instructions_image.png"
 HERO_Y = 100
 
 UPDATES_PER_FRAME = 8
