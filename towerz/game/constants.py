@@ -3,6 +3,7 @@ HERO_MOVE_SCALE = 4
 HERO_IMAGE = "towerz/images/blue_rectangle.png"
 HERO_SLASH_SOUND = "towerz/sounds/sword_slash.m4a"
 HERO_HIT_SOUND = "towerz/sounds/hero_gets_hit.m4a"
+HERO_RESOURCE_SOUND = "towerz/sounds/hit_resource_sound.m4a"
 ZOMBIE_IMAGE = "towerz/images/red_rectangle.png"
 WALL_IMAGE = "towerz/images/wall_h.png"
 BACKGROUND = "towerz/images/background.png"

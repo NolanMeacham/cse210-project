@@ -21,6 +21,7 @@ class Melee(arcade.Sprite):
         self.timer = time.time()
         self.swing = False
         self.slash_sound = arcade.load_sound(constants.HERO_SLASH_SOUND)
+        self.hit_resource_sound = arcade.load_sound(constants.HERO_RESOURCE_SOUND)
 
 
     def attack(self):
@@ -33,13 +34,15 @@ class Melee(arcade.Sprite):
         """
         if time.time() - self.timer >= 0.5:
             self.timer = time.time()
-            arcade.play_sound(self.slash_sound)
+            
             for zombie in self.cast['zombies']:
                 if self.collides_with_sprite(zombie):
+                    arcade.play_sound(self.slash_sound)
                     zombie.cur_health -= 20
 
             for resource in self.cast['resources']:
                 if self.collides_with_sprite(resource):
+                    arcade.play_sound(self.hit_resource_sound)
                     resource.get_smaller()
                     
                     resource.cur_health -= 20
