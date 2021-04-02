@@ -63,7 +63,7 @@ def main():
     cast['resource_counter'] = [resource_counter]
 
     # add the magic
-    cast['magicks'] = []
+    cast['magicks'] = arcade.SpriteList()
 
     # add the resources
     cast['resources'] = arcade.SpriteList()

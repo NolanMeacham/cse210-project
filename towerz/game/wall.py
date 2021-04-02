@@ -84,7 +84,7 @@ class Wall(SpriteWithHealth):
         walls = cast['walls']
         if len(self._point_list) >= 2:
             point_list = self._point_list
-            for i in range(2):                
+            for i in range(4):                
                 lightning = WallMagic(point_list)
                 point_list = np.roll(point_list, 1)
                 point_list.tolist()
