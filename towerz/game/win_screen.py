@@ -7,7 +7,7 @@ class WinView(arcade.View):
     Game Over view screen.
 
     """
-    def __init__(self, start_screen, tower):
+    def __init__(self, start_screen, tower, cast):
         """
         Class constructor.
 
@@ -23,6 +23,8 @@ class WinView(arcade.View):
         self.music.clear_queue()
         self.music.add_song_list(constants.WIN_SOUND)
         self.music.play_song()
+        self.cast = cast
+        self.background = arcade.load_texture('towerz/images/start_screen.PNG')
     def on_show(self):
         """
         """
@@ -35,9 +37,14 @@ class WinView(arcade.View):
         
         """
         arcade.start_render()
-        arcade.draw_text("You Won! Kinda", constants.MAX_X / 2, constants.MAX_Y / 2,
+        arcade.draw_lrwh_rectangle_textured(0, 0,
+                                            constants.MAX_X, constants.MAX_Y,
+                                            self.background)
+        arcade.draw_text("You made it past Wave 5! You Win!", constants.MAX_X / 2, 700,
                          arcade.color.WHITE, font_size=50, anchor_x="center")
-        arcade.draw_text("Click Anywhere to Go to Main Menu", constants.MAX_X / 2, constants.MAX_Y / 2-75,
+        arcade.draw_text(f"Your score was: {self.cast['score'][0].get_score()} ", constants.MAX_X / 2, 90,
+                         arcade.color.WHITE, font_size=50, anchor_x="center")
+        arcade.draw_text("Click Anywhere to Go to Main Menu", constants.MAX_X / 2, constants.MAX_Y / 50,
                          arcade.color.WHITE, font_size=20, anchor_x="center")
             
     def on_mouse_press(self, _x, _y, _button, _modifiers):

@@ -23,6 +23,7 @@ class DeathView(arcade.View):
         self.music.clear_queue()
         self.music.add_song_list(constants.DEATH_SOUND)
         self.music.play_song()
+        self.background = arcade.load_texture('towerz/images/start_screen.PNG')
     def on_show(self):
         """
         """
@@ -35,9 +36,12 @@ class DeathView(arcade.View):
         
         """
         arcade.start_render()
-        arcade.draw_text("THE TOWER WAS DESTROYED", constants.MAX_X / 2, constants.MAX_Y / 2,
+        arcade.draw_lrwh_rectangle_textured(0, 0,
+                                            constants.MAX_X, constants.MAX_Y,
+                                            self.background)
+        arcade.draw_text("GAME OVER", constants.MAX_X / 2, 700,
                          arcade.color.WHITE, font_size=50, anchor_x="center")
-        arcade.draw_text("Click Anywhere to Go to Main Menu", constants.MAX_X / 2, constants.MAX_Y / 2-75,
+        arcade.draw_text("Click Anywhere to Go to Main Menu", constants.MAX_X / 2, 50,
                          arcade.color.WHITE, font_size=20, anchor_x="center")
             
     def on_mouse_press(self, _x, _y, _button, _modifiers):

@@ -29,11 +29,13 @@ class HandleLoseOrWinAction(Action):
         hero = cast['hero'][0]
         turrets = cast['turrets']
 
-        if tower.get_current_health() <= 0:
+        if tower.get_current_health() <= 0 or hero.get_current_health() <= 0:
         
-            
+            add_enemy = self.script['update'][3]
+            arcade.unschedule(add_enemy.create_zombie)
             if self.script['update'][3].wave == 'Survival':
-                win_screen = WinView(self.start, tower)
+                
+                win_screen = WinView(self.start, tower, cast)
                 self.window.show_view(win_screen)
                 tower.cur_health = constants.TOWER_HEALTH
 

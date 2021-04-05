@@ -78,13 +78,13 @@ WALL_MAGIC_SCALING = .1
 
 #Resource
 RESOURCE_IMAGE = "towerz/images/crystal2.png"
-RESOURCE_SCALING = 0.5
+RESOURCE_SCALING = 0.3
 
 RESOURCE_COUNTER_WIDTH = 250
 
 DIFFICULTY = 1.0
-SPAWN_DIFFICULTY_MODIFIER = .001
-SPEED_DIFFICULTY_MODIFIER = .0001
+SPAWN_DIFFICULTY_MODIFIER = .0002
+SPEED_DIFFICULTY_MODIFIER = .00008
 
 #music assets
 BACKGROUND_MUSIC = ['towerz/sounds/background.mp3']
@@ -92,4 +92,4 @@ DEATH_SOUND = ['towerz/sounds/death_theme.mp3']
 MUSIC_VOLUME = 0.18
 
 CROSS_HAIR = 'towerz/images/cross_hair.png'
-WIN_SOUND = ['towerz/sounds/yes.mp3']
+WIN_SOUND = ['towerz/sounds/victory.mp3']
