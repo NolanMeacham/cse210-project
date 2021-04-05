@@ -41,6 +41,9 @@ class HandleCollisionsAction(Action):
 
         for zombie in zombies:
             if hero.collides_with_sprite(zombie):
+                
+                zombie.attacking = True
+                zombie.update_animation()
                 hero.get_hit()
                 zombie.velocity = [0,0]
 
@@ -49,6 +52,8 @@ class HandleCollisionsAction(Action):
             for zombie in zombies:
                 if wall.collides_with_sprite(zombie):
                     wall.get_hit()
+                    zombie.attacking = True
+                    zombie.update_animation()
                     zombie.velocity = [0,0]
                     if wall.get_current_health() <= 0:
                         wall.remove_from_sprite_lists()
@@ -58,13 +63,15 @@ class HandleCollisionsAction(Action):
                 resource.remove_from_sprite_lists()
         
 
-        for zomb in zombies:
-            if zomb.get_current_health() <= 0:
-                zomb.update_animation()
+        for zombie in zombies:
+            if zombie.get_current_health() <= 0:
+                zombie.update_animation()
                 
-                score.add_points(zomb.score_points)
-            if zomb.collides_with_sprite(tower):
-                zomb.velocity = [0,0]
+                score.add_points(zombie.score_points)
+            if zombie.collides_with_sprite(tower):
+                zombie.attacking = True
+                zombie.update_animation()
+                zombie.velocity = [0,0]
                 tower.cur_health -= 1
                 
 

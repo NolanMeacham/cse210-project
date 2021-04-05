@@ -27,6 +27,7 @@ class Add_enemy(Action):
         self.wave = 'Wave 1'
         
         
+        
 
 
     def execute(self, cast):
@@ -48,10 +49,13 @@ class Add_enemy(Action):
             self.speed_difficulty += constants.SPEED_DIFFICULTY_MODIFIER
     def new_wave(self):
         # This super clunky function is what determines which wave is happening
+        
         if self.count >= 0 and self.count <= 9:
             return self.wave
+            
         
         elif self.count >= 10 and self.count <= 19:
+            
             if self.first_time == 1:
                 self.wave_timer = time.time()
                 arcade.unschedule(self.create_zombie)
@@ -136,6 +140,7 @@ class Add_enemy(Action):
         """
         #This needs optimization
         ran = random.randint(1, 5)
+        ran1 = random.randint(1,5)
         random_x = 0
         random_y = 0
         if ran == 1:
@@ -151,16 +156,16 @@ class Add_enemy(Action):
             random_x =  random.randint(0 , constants.MAX_X)
             random_y = constants.MAX_Y - 20
 
-        #After 30 seconds, start spawning big zombies along with small zombies 
+        #After Wave 3 seconds, start spawning big zombies along with small zombies 
         if self.wave == "Wave 3" or self.wave == "Wave 4" or self.wave == "Wave 5" or self.wave == "Survival":
-            if ran == 1:
+            if ran1 == 1:
                 big_zombie = BigZombie(random_x,random_y, self.cast)
                 big_zombie.speed *= self.speed_difficulty
                 big_zombie.max_health = 200 + self.count
                 big_zombie.cur_health = big_zombie.max_health
                 self.cast['zombies'].append(big_zombie)
                 self.count += 1
-            elif ran == 2 or ran == 3 or ran == 4:
+            elif ran1 == 2 or ran1 == 3 or ran1 == 4:
                 zombie = Zombie(random_x, random_y, self.cast)
                 zombie.speed *= self.speed_difficulty
                 zombie.max_health = 100 + self.count
@@ -174,6 +179,8 @@ class Add_enemy(Action):
             zombie.max_health = 100 + self.count
             zombie.cur_health = zombie.max_health
             self.cast['zombies'].append(zombie)
+
+
             self.count += 1
             
 

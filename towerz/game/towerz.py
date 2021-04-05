@@ -46,13 +46,13 @@ class TowerzView(arcade.View):
         self._cast["score"][0].set_points(0)
         self._cast["bullets"] = []
         self._cast["turrets"] = arcade.SpriteList()
-        self._script["update"][3].count = 0
-        self._script["update"][3].wave = "Wave 1"
-        self._script["update"][3].speed_difficulty = constants.DIFFICULTY
-        self._script["update"][3].spawn_difficulty = constants.DIFFICULTY
-        self._script["update"][3].timer = time.time()
-        self._script["update"][3].first_time = 1
-        self._script["update"][3].can_run = True
+        # self._script["update"][3].count = 0
+        # self._script["update"][3].wave = "Wave 1"
+        # self._script["update"][3].speed_difficulty = constants.DIFFICULTY
+        # self._script["update"][3].spawn_difficulty = constants.DIFFICULTY
+        # self._script["update"][3].timer = time.time()
+        # self._script["update"][3].first_time = 1
+        # self._script["update"][3].can_run = True
         for resource in self._cast["resources"]:
             resource.cur_health = 0
 

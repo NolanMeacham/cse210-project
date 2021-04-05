@@ -34,7 +34,8 @@ class Zombie(SpriteWithHealth):
         self.score_points = constants.ZOMBIE_POINTS
         self.speed = constants.ZOMBIE_SPEED
         self.count = 0
-        self.cur_texture2 = 0
+        
+        self.attacking = False
         
 
         self.character_face_direction = constants.RIGHT_FACING
@@ -42,6 +43,8 @@ class Zombie(SpriteWithHealth):
         # Used for flipping between image sequences
         self.cur_texture = 0
         self.cur_texture1 = 0
+        self.cur_texture2 = 0
+        self.cur_texture3 = 0
 
         # Adjust the collision box. Default includes too much empty space
         # side-to-side. Box is centered at sprite center, (0, 0)
@@ -63,6 +66,11 @@ class Zombie(SpriteWithHealth):
         for i in range(4):
             texture = self.load_texture_pair('towerz/images/skelly_death.png', i*150, 0, 150, 150)
             self.death_textures.append(texture)
+
+        self.attack_textures = []
+        for i in range(8):
+            texture = self.load_texture_pair('towerz/images/skelly_attack.png', i*150, 0, 150, 150)
+            self.attack_textures.append(texture)
 
 
     def attack_tower(self):
@@ -136,20 +144,36 @@ class Zombie(SpriteWithHealth):
         self.cur_texture1 += 1
         if self.cur_texture1 >= 4 * constants.UPDATES_PER_FRAME:
             self.cur_texture1 = 0
-        if self.change_x == 0 and self.change_y == 0 and self.alive == True:
+        if self.change_x == 0 and self.change_y == 0 and self.alive == True and self.attacking == False:
             frame = self.cur_texture1 // constants.UPDATES_PER_FRAME
             direction = self.character_face_direction
             self.texture = self.idle_textures[frame-1][direction]
             return
 
         #Walking animation
-        if self.cur_texture >= 4 * constants.UPDATES_PER_FRAME:
-            self.cur_texture = 0
-        frame = self.cur_texture // constants.UPDATES_PER_FRAME
-        direction = self.character_face_direction
-        self.texture = self.run_textures[frame][direction]
+        
+       
 
-        self.cur_texture += 1
+        if self.attacking:
+            if self.cur_texture3 >= 8 * constants.UPDATES_PER_FRAME:
+                self.cur_texture3 = 0
+            frame = self.cur_texture3 // constants.UPDATES_PER_FRAME
+            direction = self.character_face_direction
+            self.texture = self.attack_textures[frame][direction]
+            self.cur_texture3 += 1
+            if frame >= 7:
+                self.attacking = False
+
+        if self.change_x != 0 and self.change_y != 0:
+            if self.cur_texture >= 4 * constants.UPDATES_PER_FRAME:
+                self.cur_texture = 0
+            frame = self.cur_texture // constants.UPDATES_PER_FRAME
+            direction = self.character_face_direction
+            self.texture = self.run_textures[frame][direction]
+            self.cur_texture += 1            
+
+
+        
 
         #Dying animation
         if self.cur_health <= 0:

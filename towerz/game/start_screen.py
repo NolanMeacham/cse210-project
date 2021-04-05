@@ -65,6 +65,8 @@ class StartView(arcade.View):
             button ():
             modifiers ():
         """
+        if len(self.script['update']) == 4:
+            self.script['update'].pop()
         self.script['update'].append(Add_enemy())
         game_view = TowerzView(self.cast, self.script, self.input_service, self.music)
         game_view.setup()
