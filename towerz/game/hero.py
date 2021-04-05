@@ -59,17 +59,17 @@ class Hero(SpriteWithHealth):
         
         # Load texures for running
         # self.run_textures = []
-        # for i in range(5):
+        # for i in range(5):s
         #     texture = self.load_texture_pair(f'{main_path}-run-0{i+1}.png')
         #     self.run_textures.append(texture)
         self.run_textures = []
         for i in range(8):
-            texture = self.load_texture_pair('towerz/images/Knightrun_strip.png', i*96, 0, 96, 64)
+            texture = self.load_texture_pair('towerz/images/Knightrun_strip.png', i*64, 0, 64, 64)
             self.run_textures.append(texture)
         
         self.attack_textures = []
         for i in range(7):
-            texture = self.load_texture_pair('towerz/images/KnightAttack_strip.png', 1008 + i*144, 0, 144, 64)
+            texture = self.load_texture_pair('towerz/images/KnightAttack_strip.png', 448 + i*64, 0, 64, 64)
             self.attack_textures.append(texture)
         
 
@@ -157,9 +157,11 @@ class Hero(SpriteWithHealth):
         if self.cur_texture2 >= 7 * constants.UPDATES_PER_FRAME:
             self.cur_texture2 = 0
         if self.attacking:
+            self.scale = 2.4
             frame = self.cur_texture2 // constants.UPDATES_PER_FRAME
             direction = self.character_face_direction
             self.texture = self.attack_textures[frame][direction]
+
             if frame >= 6:
                 self.attacking = False
             return
@@ -174,13 +176,16 @@ class Hero(SpriteWithHealth):
         if self.cur_texture1 >= 10 * constants.UPDATES_PER_FRAME:
             self.cur_texture1 = 0
         if self.change_x == 0 and self.change_y == 0 and self.alive == True :
+            self.scale = 2
             frame = self.cur_texture1 // constants.UPDATES_PER_FRAME
             direction = self.character_face_direction
             self.texture = self.idle_textures[frame-1][direction]
+            
             return
 
-        #Walking animation
+        # Running animation
         self.cur_texture += 1
+        self.scale = 2.2
         if self.cur_texture >= 8 * constants.UPDATES_PER_FRAME:
             self.cur_texture = 0
         frame = self.cur_texture // constants.UPDATES_PER_FRAME

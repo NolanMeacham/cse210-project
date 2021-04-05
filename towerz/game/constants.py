@@ -10,7 +10,7 @@ BACKGROUND = "towerz/images/background.png"
 INSTRUCTION_IMAGE = "towerz/images/instructions_image.png"
 HERO_Y = 100
 
-UPDATES_PER_FRAME = 8
+UPDATES_PER_FRAME = 12
 
 RIGHT_FACING = 0
 LEFT_FACING = 1
