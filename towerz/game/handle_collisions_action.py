@@ -34,6 +34,8 @@ class HandleCollisionsAction(Action):
 
         resources = cast["resources"]
 
+        magicks = cast["magicks"]
+
         # handle collisions for each actor appropriately:
         
         for zombie in zombies:
@@ -57,6 +59,20 @@ class HandleCollisionsAction(Action):
                     zombie.velocity = [0,0]
                     if wall.get_current_health() <= 0:
                         wall.remove_from_sprite_lists()
+
+        for magic in magicks:
+            
+            for zombie in zombies:
+                if magic.collides_with_sprite(zombie):
+                    if zombie.cur_health > (zombie.max_health / 4):
+                        zombie.cur_health /= 2
+                    else:
+                        zombie.cur_health == (zombie.max_health / 4)
+
+            if magic.center_x < 0 or magic.center_y < 0  :
+                magicks.remove(magic)
+            elif magic.center_x > constants.MAX_X or magic.center_y > constants.MAX_Y:
+                magicks.remove(magic)
 
         for resource in resources:
             if resource.get_current_health() <= 0:

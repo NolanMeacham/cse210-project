@@ -51,9 +51,9 @@ class Wall(SpriteWithHealth):
         """
         Gives a timed death to the wall object
         """
-        # if time.time() - self.timer >= self._lifetime:        
-        #     self.remove_from_sprite_lists()
-        pass
+        if time.time() - self.timer >= self._lifetime:        
+            self.remove_from_sprite_lists()
+        
 
     
     def cast_magic(self):
@@ -82,7 +82,7 @@ class Wall(SpriteWithHealth):
         cast = self.cast
         zombies = cast["zombies"]
         walls = cast['walls']
-        if len(self._point_list) >= 2:
+        if len(self._point_list) > 1:
             point_list = self._point_list
             for i in range(4):                
                 lightning = WallMagic(point_list)
