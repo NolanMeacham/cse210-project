@@ -53,4 +53,5 @@ class WinView(arcade.View):
         
         """
         self.tower.cur_health = constants.TOWER_HEALTH
+        self.music.music.stop(self.music.current_player)
         self.window.show_view(self.start_view)

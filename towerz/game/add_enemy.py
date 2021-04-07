@@ -96,7 +96,7 @@ class Add_enemy(Action):
                         self.can_run = False
                         self.wave = "Wave 4"
             return self.wave
-        elif self.count >= 65 and self.count <= 100:
+        elif self.count >= 65 and self.count <= 90:
             if self.first_time == 0:
                 self.wave_timer = time.time()
                 arcade.unschedule(self.create_zombie)
@@ -110,7 +110,7 @@ class Add_enemy(Action):
                         self.can_run = False
                         self.wave = "Wave 5"
             return self.wave
-        elif self.count >= 100:
+        elif self.count >= 90:
             if self.first_time == 1:
                 self.wave_timer = time.time()
                 arcade.unschedule(self.create_zombie)

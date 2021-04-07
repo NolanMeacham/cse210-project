@@ -186,7 +186,7 @@ class Zombie(SpriteWithHealth):
             self.texture = self.death_textures[frame][direction]
             if frame == 3:
                 self.texture = self.death_textures[3][direction]
-                self.kill()
+                self.remove_from_sprite_lists()
 
         self.cur_texture2 += 1
 
