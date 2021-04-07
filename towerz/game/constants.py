@@ -45,7 +45,7 @@ TOWER_IMAGE = "towerz/images/gray_rectangle.png"
 TOWER_SCALE = 4
 TOWER_X = MAX_X / 2
 TOWER_Y = MAX_Y / 2
-TOWER_HEALTH = 5000000000000000000000000000000000000000000000000000000000000000
+TOWER_HEALTH = 500
 TOWER_HEALTH_X = 1000
 TOWER_HEALTH_Y = 50
 
@@ -76,6 +76,7 @@ WALL_LIFETIME = 20
 WALL_MAGIC_IMG = 'towerz/images/lightning.png'
 WALL_MAGIC_SCALING = .1
 MAGIC_SPEED = 50
+MAGIC_SOUND = 'towerz/sounds/magic_sound.wav'
 
 #Resource
 RESOURCE_IMAGE = "towerz/images/crystal2.png"

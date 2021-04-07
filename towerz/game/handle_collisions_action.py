@@ -61,11 +61,14 @@ class HandleCollisionsAction(Action):
                         wall.remove_from_sprite_lists()
 
         for magic in magicks:
-            
+
             for zombie in zombies:
                 if magic.collides_with_sprite(zombie):
                     if zombie.cur_health > (zombie.max_health / 4):
                         zombie.cur_health /= 2
+                        sound_effect = constants.MAGIC_SOUND
+                        sound_effect = arcade.load_sound(sound_effect)
+                        arcade.play_sound(sound_effect)
                     else:
                         zombie.cur_health == (zombie.max_health / 4)
 
