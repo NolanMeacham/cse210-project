@@ -1,3 +1,4 @@
+A python game made utilizing the object oriented programming paradigm. 
 # TowerZ
 Defend the tower from zombie invasion!
 
